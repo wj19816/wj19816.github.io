@@ -1,0 +1,13 @@
+# Basic config for jeklly.
+# Version: 0.0
+
+# Site settings
+locale : "zh-CN"
+title  : "王子段 / WangZiduan "
+name : &name "Wang Ziduan"
+description : &description "写写代码撸撸猫,记记笔记拍拍照."
+url : https://wj19816.github.io
+
+# Publish posts or collection documents with a future date.
+future: true
+
