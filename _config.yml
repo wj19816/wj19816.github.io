@@ -8,6 +8,10 @@ name : &name "Wang Ziduan"
 description : &description "写写代码撸撸猫,记记笔记拍拍照."
 url : https://wj19816.github.io
 
+auto: true # 修改文件时重新生成站点
+future: true # Publish posts or collection documents with a future date.
+
+
 # Site Author
 author:
   name             : "Wang Ziduan"
@@ -16,8 +20,6 @@ author:
   location         : "中国 北京"
   github           : "wj19816"
   weibo            : "-王子段-"
-
-
 
 
 # Markdown settings
@@ -31,10 +33,22 @@ kramdown:
       line_numbers: true
       start_line: 1
 
+
 # Sidebar settings
 sidebar: true                           # whether or not using Sidebar.
 sidebar-about-description: "For the next quantum leap<br>You will never know unless you try."
-sidebar-avatar: /img/avatar-hux-ny.jpg      # use absolute URL, seeing it's used in both `/` and `/about/`
+sidebar-avatar: /images/touxiang.png      # use absolute URL, seeing it's used in both `/` and `/about/`
+
+
+# Build settings
+highlighter: rouge
+#permalink: pretty
+permalink: /:categories/:title/
+paginate: 10 # amount of posts to show
+paginate_path: /page:num/
+exclude: ["less","node_modules","Gruntfile.js","package.json","README.md","README.zh.md"]
+anchorjs: true                          # if you want to customize anchor. check out line:181 of `post.html`
+timezone: CN  # If you have timezone issue (e.g. #68) in China, uncomment to use this:
 
 
 # SEO Related
@@ -43,10 +57,6 @@ bing_site_verification   :
 alexa_site_verification  :
 yandex_site_verification :
 
-# 修改文件时重新生成站点
-auto: true
-# Publish posts or collection documents with a future date.
-future: true
 
 # Plugins
 plugins:
@@ -62,3 +72,7 @@ whitelist:
   - jekyll-gist
   - jekyll-feed
   - jemoji
+
+
+# MathJax rendering for layout:page (e.g. post preview)
+page-mathjax: false
