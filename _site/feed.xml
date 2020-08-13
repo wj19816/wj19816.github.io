@@ -1,0 +1,528 @@
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.1.1">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2020-08-13T03:51:47+00:00</updated><id>http://localhost:4000/feed.xml</id><title type="html">王子段 | WangZiduan </title><subtitle>写写代码撸撸猫,记记笔记拍拍照.</subtitle><author><name>Wang Ziduan</name></author><entry><title type="html">【笔记】机器学习(西瓜书) 周志华</title><link href="http://localhost:4000/posts/xiguashu/" rel="alternate" type="text/html" title="【笔记】机器学习(西瓜书) 周志华" /><published>2020-08-03T00:00:00+00:00</published><updated>2020-08-03T00:00:00+00:00</updated><id>http://localhost:4000/posts/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0%E8%A5%BF%E7%93%9C%E4%B9%A6-%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0</id><content type="html" xml:base="http://localhost:4000/posts/xiguashu/"></content><author><name>Wang Ziduan</name></author><category term="编程" /><category term="机器学习" /><category term="理论" /><summary type="html"></summary></entry><entry><title type="html">Git及Github相关使用</title><link href="http://localhost:4000/posts/github" rel="alternate" type="text/html" title="Git及Github相关使用" /><published>2020-07-28T00:00:00+00:00</published><updated>2020-07-28T00:00:00+00:00</updated><id>http://localhost:4000/posts/Git%E5%8F%8AGithub%E7%9B%B8%E5%85%B3%E4%BD%BF%E7%94%A8</id><content type="html" xml:base="http://localhost:4000/posts/github">&lt;h1 id=&quot;github&quot;&gt;Github&lt;/h1&gt;
+
+&lt;div class=&quot;language-shell highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;table class=&quot;rouge-table&quot;&gt;&lt;tbody&gt;&lt;tr&gt;&lt;td class=&quot;rouge-gutter gl&quot;&gt;&lt;pre class=&quot;lineno&quot;&gt;1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;rouge-code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;c&quot;&gt;#从github拉取项目到本地&lt;/span&gt;
+git clone https://
+
+&lt;span class=&quot;c&quot;&gt;#提交修改&lt;/span&gt;
+git add &lt;span class=&quot;nb&quot;&gt;.&lt;/span&gt;
+git commit &lt;span class=&quot;nt&quot;&gt;-m&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;修改信息&quot;&lt;/span&gt;
+git push origin master &lt;span class=&quot;c&quot;&gt;# master可以改为其它任何分支&lt;/span&gt;
+
+&lt;span class=&quot;c&quot;&gt;#更新远端代码到本地&lt;/span&gt;
+git pull
+
+&lt;span class=&quot;c&quot;&gt;#放弃本地修改，强制更新远端代码到本地&lt;/span&gt;
+git reset &lt;span class=&quot;nt&quot;&gt;--hard&lt;/span&gt; origin/master
+git pull
+
+&lt;span class=&quot;c&quot;&gt;#修改当前文件夹关联的库&lt;/span&gt;
+git remote &lt;span class=&quot;nb&quot;&gt;rm &lt;/span&gt;origin  &lt;span class=&quot;c&quot;&gt;#先删除原来的&lt;/span&gt;
+git remote add origin http://   &lt;span class=&quot;c&quot;&gt;#再加上新的&lt;/span&gt;
+
+&lt;span class=&quot;c&quot;&gt;#切换分支&lt;/span&gt;
+git chechout feature_wj
+git branch &lt;span class=&quot;nt&quot;&gt;-a&lt;/span&gt;  &lt;span class=&quot;c&quot;&gt;#查看所有的分支&lt;/span&gt;
+
+&lt;span class=&quot;c&quot;&gt;#上传本地文件夹&lt;/span&gt;
+git init  &lt;span class=&quot;c&quot;&gt;#初始化&lt;/span&gt;
+git add &lt;span class=&quot;nb&quot;&gt;.&lt;/span&gt;
+git commit &lt;span class=&quot;nt&quot;&gt;-m&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;&quot;&lt;/span&gt;
+git remote add origin ... &lt;span class=&quot;c&quot;&gt;#和远程仓库匹配&lt;/span&gt;
+git push &lt;span class=&quot;nt&quot;&gt;-u&lt;/span&gt; origin master
+&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;h1 id=&quot;git-page&quot;&gt;Git Page&lt;/h1&gt;
+
+&lt;div class=&quot;language-shell highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;table class=&quot;rouge-table&quot;&gt;&lt;tbody&gt;&lt;tr&gt;&lt;td class=&quot;rouge-gutter gl&quot;&gt;&lt;pre class=&quot;lineno&quot;&gt;1
+2
+3
+4
+5
+6
+7
+8
+&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;rouge-code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;c&quot;&gt;# 安装jekyll&lt;/span&gt;
+&lt;span class=&quot;c&quot;&gt;## --这之前首先要安装ruby和gem，但mac上不用自己安装&lt;/span&gt;
+gem &lt;span class=&quot;nb&quot;&gt;install &lt;/span&gt;jekyll
+
+&lt;span class=&quot;c&quot;&gt;#开始使用&lt;/span&gt;
+jekyll build &lt;span class=&quot;c&quot;&gt;#首次使用&lt;/span&gt;
+jekyll server &lt;span class=&quot;c&quot;&gt;#开启本地预览&lt;/span&gt;
+bundle &lt;span class=&quot;nb&quot;&gt;exec &lt;/span&gt;jekyll server  &lt;span class=&quot;c&quot;&gt;#如果上面不行，就用这个&lt;/span&gt;
+&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;</content><author><name>Wang Ziduan</name></author><category term="code" /><category term="环境搭建" /><summary type="html">Github</summary></entry><entry><title type="html">Linux及shell相关使用</title><link href="http://localhost:4000/posts/linux" rel="alternate" type="text/html" title="Linux及shell相关使用" /><published>2020-07-28T00:00:00+00:00</published><updated>2020-07-28T00:00:00+00:00</updated><id>http://localhost:4000/posts/Linux%E5%8F%8Ashell%E7%9B%B8%E5%85%B3%E4%BD%BF%E7%94%A8</id><content type="html" xml:base="http://localhost:4000/posts/linux">&lt;h1 id=&quot;linux&quot;&gt;Linux&lt;/h1&gt;
+
+&lt;div class=&quot;language-shell highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;table class=&quot;rouge-table&quot;&gt;&lt;tbody&gt;&lt;tr&gt;&lt;td class=&quot;rouge-gutter gl&quot;&gt;&lt;pre class=&quot;lineno&quot;&gt;1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+31
+32
+33
+34
+35
+36
+37
+38
+&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;rouge-code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;c&quot;&gt;# 一些简单的常用操作&lt;/span&gt;
+&lt;span class=&quot;c&quot;&gt;## tips:按tab键可以快速填充&lt;/span&gt;
+
+&lt;span class=&quot;nb&quot;&gt;ls&lt;/span&gt; &lt;span class=&quot;c&quot;&gt;#查看文件夹&lt;/span&gt;
+
+&lt;span class=&quot;nb&quot;&gt;cd &lt;/span&gt;xxxx   &lt;span class=&quot;c&quot;&gt;##前往文件夹&lt;/span&gt;
+&lt;span class=&quot;nb&quot;&gt;cd&lt;/span&gt; ..     &lt;span class=&quot;c&quot;&gt;#前往上层文件夹&lt;/span&gt;
+
+&lt;span class=&quot;nb&quot;&gt;pwd&lt;/span&gt;   &lt;span class=&quot;c&quot;&gt;#查看当前文件夹的绝对路径&lt;/span&gt;
+
+&lt;span class=&quot;nb&quot;&gt;mkdir&lt;/span&gt; &lt;span class=&quot;c&quot;&gt;#新建文件夹&lt;/span&gt;
+&lt;span class=&quot;nb&quot;&gt;rm&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;-r&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;-f&lt;/span&gt; &lt;span class=&quot;c&quot;&gt;#删除文件夹：-r 删除文件夹里的所有目录 -f 直接强行删除&lt;/span&gt;
+&lt;span class=&quot;nb&quot;&gt;rm&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;-f&lt;/span&gt; dir-&lt;span class=&quot;k&quot;&gt;*&lt;/span&gt;.jpg  &lt;span class=&quot;c&quot;&gt;#可以用通配符*同时删除多个文件&lt;/span&gt;
+&lt;span class=&quot;nb&quot;&gt;rm&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;-i&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;dir&lt;/span&gt;  &lt;span class=&quot;c&quot;&gt;#在删除前进行询问&lt;/span&gt;
+
+&lt;span class=&quot;nb&quot;&gt;cp&lt;/span&gt; &lt;span class=&quot;c&quot;&gt;#复制文件&lt;/span&gt;
+&lt;span class=&quot;nb&quot;&gt;cp&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;-a&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;source &lt;/span&gt;destination &lt;span class=&quot;c&quot;&gt;#复制文件属性+递归持续复制（复制整个目录）&lt;/span&gt;
+&lt;span class=&quot;c&quot;&gt;#如果destination为文件名，则重命名&lt;/span&gt;
+
+&lt;span class=&quot;nb&quot;&gt;mv&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;-f&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;-u&lt;/span&gt; &lt;span class=&quot;c&quot;&gt;#移动文件与目录，或修改名称：-f 强制删除 -i 询问是否覆盖 -u 若已存在，而source比较新，才会升级&lt;/span&gt;
+
+./test.sh &lt;span class=&quot;c&quot;&gt;#运行某个shell脚本，必须要加上“./”，如果不加，系统会去/bin之类的系统目录里查找该文件&lt;/span&gt;
+
+&lt;span class=&quot;nb&quot;&gt;touch &lt;/span&gt;xxx   &lt;span class=&quot;c&quot;&gt;#创建文件&lt;/span&gt;
+&lt;span class=&quot;nb&quot;&gt;cat&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;-n&lt;/span&gt; xxx  &lt;span class=&quot;c&quot;&gt;#从第一行开始显示文件内容,同时输出行号（若要空白行不显示行号，用-b）&lt;/span&gt;
+&lt;span class=&quot;nb&quot;&gt;tac &lt;/span&gt;xxx     &lt;span class=&quot;c&quot;&gt;#从最后一行开始显示文件内容&lt;/span&gt;
+&lt;span class=&quot;nb&quot;&gt;nl &lt;/span&gt;xxx      &lt;span class=&quot;c&quot;&gt;#显示时顺便输出行号&lt;/span&gt;
+more xxx    &lt;span class=&quot;c&quot;&gt;#分页显示文件内容，空格：翻一页 回车：翻一行 /子串：在当前搜索该关键字&lt;/span&gt;
+less xxx    &lt;span class=&quot;c&quot;&gt;#分页显示文件内容，但可以向前翻页 ?字串：向上搜索关键词 n：重复前一个搜索&lt;/span&gt;
+&lt;span class=&quot;nb&quot;&gt;head&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;-n&lt;/span&gt; 20 xxx    &lt;span class=&quot;c&quot;&gt;#只看前几行,默认显示10行&lt;/span&gt;
+&lt;span class=&quot;nb&quot;&gt;tail &lt;/span&gt;xxx    &lt;span class=&quot;c&quot;&gt;#只看最后几行&lt;/span&gt;
+
+
+
+&lt;span class=&quot;c&quot;&gt;# 关机操作&lt;/span&gt;
+&lt;span class=&quot;nb&quot;&gt;sync&lt;/span&gt; &lt;span class=&quot;c&quot;&gt;#将数据内存同步到硬盘&lt;/span&gt;
+shutdown &lt;span class=&quot;nt&quot;&gt;-h&lt;/span&gt; now &lt;span class=&quot;c&quot;&gt;#立马关机&lt;/span&gt;
+shutdown &lt;span class=&quot;nt&quot;&gt;-r&lt;/span&gt; +10 &lt;span class=&quot;c&quot;&gt;#十分钟后重启&lt;/span&gt;
+&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;&lt;img src=&quot;https://www.runoob.com/wp-content/uploads/2015/10/vi-vim-cheat-sheet-sch.gif&quot; alt=&quot;img&quot; /&gt;&lt;/p&gt;
+
+&lt;h2 id=&quot;vim&quot;&gt;Vim&lt;/h2&gt;
+
+&lt;div class=&quot;language-shell highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;table class=&quot;rouge-table&quot;&gt;&lt;tbody&gt;&lt;tr&gt;&lt;td class=&quot;rouge-gutter gl&quot;&gt;&lt;pre class=&quot;lineno&quot;&gt;1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+31
+&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;rouge-code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;c&quot;&gt;#刚进入vim时默认进入命令模式&lt;/span&gt;
+i  &lt;span class=&quot;c&quot;&gt;#切换到输入模式&lt;/span&gt;
+x  &lt;span class=&quot;c&quot;&gt;#删除当前光标所在字符&lt;/span&gt;
+:  &lt;span class=&quot;c&quot;&gt;#切换到底线命令模式，在最底一行输入命令&lt;/span&gt;
+
+&lt;span class=&quot;c&quot;&gt;#底线命令模式&lt;/span&gt;
+:w  &lt;span class=&quot;c&quot;&gt;#保存&lt;/span&gt;
+:q!  &lt;span class=&quot;c&quot;&gt;#不保存，强行离开&lt;/span&gt;
+:wq  &lt;span class=&quot;c&quot;&gt;#保存后离开&lt;/span&gt;
+:w &lt;span class=&quot;o&quot;&gt;[&lt;/span&gt;filename]  &lt;span class=&quot;c&quot;&gt;#储存成另一个文档&lt;/span&gt;
+:r &lt;span class=&quot;o&quot;&gt;[&lt;/span&gt;filename]  &lt;span class=&quot;c&quot;&gt;#在当前文档中读入另一个文档的数据，插入到当前光标后&lt;/span&gt;
+:n1,n2 &lt;span class=&quot;o&quot;&gt;[&lt;/span&gt;filename]  &lt;span class=&quot;c&quot;&gt;#将n1行到n2行的内容储存成新文档&lt;/span&gt;
+:![commond]  &lt;span class=&quot;c&quot;&gt;#暂时离开vim到命令行中执行command&lt;/span&gt;
+
+&lt;span class=&quot;c&quot;&gt;#快捷键操作&lt;/span&gt;
+H/M/L  &lt;span class=&quot;c&quot;&gt;#光标移动到这个屏幕的最上方/中央/下方那一行的第一个字符&lt;/span&gt;
+ndd  &lt;span class=&quot;c&quot;&gt;#删除光标所在的向下n行&lt;/span&gt;
+d1G  &lt;span class=&quot;c&quot;&gt;#删除光标到第一行的所有数据&lt;/span&gt;
+dG   &lt;span class=&quot;c&quot;&gt;#删除光标到最后一行的所有数据&lt;/span&gt;
+yy   &lt;span class=&quot;c&quot;&gt;#复制光标所在哪一行&lt;/span&gt;
+
+&lt;span class=&quot;c&quot;&gt;#搜索替换&lt;/span&gt;
+/word  &lt;span class=&quot;c&quot;&gt;#向下寻找&lt;/span&gt;
+?word  &lt;span class=&quot;c&quot;&gt;#向上寻找&lt;/span&gt;
+n   &lt;span class=&quot;c&quot;&gt;#继续向下寻找&lt;/span&gt;
+N   &lt;span class=&quot;c&quot;&gt;#返回向上寻找&lt;/span&gt;
+:n1,n2s/word1/word2/g  &lt;span class=&quot;c&quot;&gt;#在n1与n2行之间寻找word1，并将该字符串取代为word2（1：第一行，$最后一行&lt;/span&gt;
+
+&lt;span class=&quot;c&quot;&gt;#环境设置&lt;/span&gt;
+:set nu &lt;span class=&quot;c&quot;&gt;#显示行号&lt;/span&gt;
+:set nonu &lt;span class=&quot;c&quot;&gt;#取消行号&lt;/span&gt;
+&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;div class=&quot;language-shell highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;table class=&quot;rouge-table&quot;&gt;&lt;tbody&gt;&lt;tr&gt;&lt;td class=&quot;rouge-gutter gl&quot;&gt;&lt;pre class=&quot;lineno&quot;&gt;1
+2
+3
+4
+5
+6
+&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;rouge-code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;c&quot;&gt;#批量添加注释&lt;/span&gt;
+1. ctrl+v 进入块选择模式
+2. 移动光标选择所要的行
+3. 大写I进入插入模式
+4. 输入注释符号//或#
+5. 按两下esc
+&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;h2 id=&quot;快捷键&quot;&gt;快捷键&lt;/h2&gt;
+
+&lt;div class=&quot;language-shell highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;table class=&quot;rouge-table&quot;&gt;&lt;tbody&gt;&lt;tr&gt;&lt;td class=&quot;rouge-gutter gl&quot;&gt;&lt;pre class=&quot;lineno&quot;&gt;1
+2
+&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;rouge-code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;nb&quot;&gt;command&lt;/span&gt;+D  &lt;span class=&quot;c&quot;&gt;#在同一窗口内打开另一个shell窗口标签&lt;/span&gt;
+&lt;span class=&quot;nb&quot;&gt;command&lt;/span&gt;+←→ &lt;span class=&quot;c&quot;&gt;#快速移动到行首或行尾&lt;/span&gt;
+&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;h1 id=&quot;shell&quot;&gt;Shell&lt;/h1&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;shell编程环境也有许多，如Bourne Shell、Bourne Again Shell、C Shell、K Shell等，一般常用的是Bourne Again Shell(即bash)，这也是linux系统默认的shell。&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;h2 id=&quot;常用&quot;&gt;常用&lt;/h2&gt;
+
+&lt;div class=&quot;language-shell highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;table class=&quot;rouge-table&quot;&gt;&lt;tbody&gt;&lt;tr&gt;&lt;td class=&quot;rouge-gutter gl&quot;&gt;&lt;pre class=&quot;lineno&quot;&gt;1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+31
+32
+33
+34
+35
+36
+37
+38
+39
+&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;rouge-code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;c&quot;&gt;#!/bin/bash          #指定shell解释器&lt;/span&gt;
+
+&lt;span class=&quot;c&quot;&gt;#echo&lt;/span&gt;
+&lt;span class=&quot;nb&quot;&gt;echo&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;'输出一些文字'&lt;/span&gt; 
+&lt;span class=&quot;nb&quot;&gt;echo&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;-e&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;OK!&lt;/span&gt;&lt;span class=&quot;se&quot;&gt;\n&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;&lt;/span&gt;   &lt;span class=&quot;c&quot;&gt;#-e 开启转义&lt;/span&gt;
+&lt;span class=&quot;nb&quot;&gt;echo&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;hello world!&quot;&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;&amp;gt;&lt;/span&gt; myfile  &lt;span class=&quot;c&quot;&gt;#结果重定向至文件&lt;/span&gt;
+&lt;span class=&quot;nb&quot;&gt;echo&lt;/span&gt; &lt;span class=&quot;sb&quot;&gt;`&lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;date&lt;/span&gt;&lt;span class=&quot;sb&quot;&gt;`&lt;/span&gt;  &lt;span class=&quot;c&quot;&gt;#显示时间&lt;/span&gt;
+
+&lt;span class=&quot;c&quot;&gt;#变量&lt;/span&gt;
+&lt;span class=&quot;nv&quot;&gt;var1&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;'定义一个变量，等号周围没有空格'&lt;/span&gt;
+&lt;span class=&quot;nb&quot;&gt;readonly &lt;/span&gt;var1  &lt;span class=&quot;c&quot;&gt;#只读变量&lt;/span&gt;
+&lt;span class=&quot;nb&quot;&gt;unset &lt;/span&gt;var1     &lt;span class=&quot;c&quot;&gt;#删除变量&lt;/span&gt;
+
+&lt;span class=&quot;c&quot;&gt;#字符串&lt;/span&gt;
+&lt;span class=&quot;nb&quot;&gt;echo&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;'${var1}，使用一个变量'&lt;/span&gt;   &lt;span class=&quot;c&quot;&gt;#!!单引号中的所有字符都会被原样输出，引用变量无效&lt;/span&gt;
+&lt;span class=&quot;nb&quot;&gt;echo&lt;/span&gt; &lt;span class=&quot;sb&quot;&gt;`&lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;expr &lt;/span&gt;index &lt;span class=&quot;s2&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;$string&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;&lt;/span&gt; io&lt;span class=&quot;sb&quot;&gt;`&lt;/span&gt;  &lt;span class=&quot;c&quot;&gt;#查找字符i或o的位置(看哪个先出现)&lt;/span&gt;
+&lt;span class=&quot;nb&quot;&gt;echo&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;${#&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;string&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;}&lt;/span&gt;  &lt;span class=&quot;c&quot;&gt;#获取字符串长度&lt;/span&gt;
+&lt;span class=&quot;nt&quot;&gt;-z&lt;/span&gt; &lt;span class=&quot;c&quot;&gt;#检测字符串长度是否为0&lt;/span&gt;
+&lt;span class=&quot;nt&quot;&gt;-n&lt;/span&gt; &lt;span class=&quot;c&quot;&gt;#检测字符串长度是否不为0&lt;/span&gt;
+&lt;span class=&quot;nv&quot;&gt;$ &lt;/span&gt; &lt;span class=&quot;c&quot;&gt;#检测字符串是否为空&lt;/span&gt;
+
+&lt;span class=&quot;c&quot;&gt;#定义数组&lt;/span&gt;
+&lt;span class=&quot;nv&quot;&gt;array_n&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=(&lt;/span&gt;v0 v1 v2&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt;
+array_n[n]&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;vn  &lt;span class=&quot;c&quot;&gt;#可以不使用连续的下标，而且下标的范围没有限制&lt;/span&gt;
+&lt;span class=&quot;k&quot;&gt;${&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;array_n&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[@]&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;}&lt;/span&gt;  &lt;span class=&quot;c&quot;&gt;#读取数组中的所有元素&lt;/span&gt;
+
+&lt;span class=&quot;c&quot;&gt;#Shell 里面的中括号（包括单中括号与双中括号）可用于一些条件的测试&lt;/span&gt;
+&lt;span class=&quot;o&quot;&gt;[&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;$var&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;-eq&lt;/span&gt; 0 &lt;span class=&quot;o&quot;&gt;]&lt;/span&gt; &lt;span class=&quot;c&quot;&gt;#变量是否为0&lt;/span&gt;
+&lt;span class=&quot;o&quot;&gt;[&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;-e&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;$var&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;]&lt;/span&gt;    &lt;span class=&quot;c&quot;&gt;#文件是否存在&lt;/span&gt;
+&lt;span class=&quot;o&quot;&gt;[&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;-d&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;$var&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;]&lt;/span&gt;    &lt;span class=&quot;c&quot;&gt;#是否是目录&lt;/span&gt;
+&lt;span class=&quot;o&quot;&gt;[[&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;$var1&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;$var2&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;]]&lt;/span&gt; &lt;span class=&quot;c&quot;&gt;#字符串比较&lt;/span&gt;
+
+&lt;span class=&quot;nt&quot;&gt;-s&lt;/span&gt; file  &lt;span class=&quot;c&quot;&gt;#检测文件是否存在，不为空返回true&lt;/span&gt;
+&lt;span class=&quot;nt&quot;&gt;-e&lt;/span&gt; file  &lt;span class=&quot;c&quot;&gt;#检测文件（或目录）是否存在，如果是，返回true&lt;/span&gt;
+
+&lt;span class=&quot;c&quot;&gt;#printf（不会自动换行），但更适合格式输出&lt;/span&gt;
+&lt;span class=&quot;nb&quot;&gt;read &lt;/span&gt;var  &lt;span class=&quot;c&quot;&gt;#从键盘读入输入&lt;/span&gt;
+
+&lt;span class=&quot;nb&quot;&gt;readlink&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;-f&lt;/span&gt; &lt;span class=&quot;c&quot;&gt;#一直跟随符号链接，直到直到非符号链接的文件位置&lt;/span&gt;
+&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;h2 id=&quot;控制逻辑&quot;&gt;控制逻辑&lt;/h2&gt;
+
+&lt;div class=&quot;language-shell highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;table class=&quot;rouge-table&quot;&gt;&lt;tbody&gt;&lt;tr&gt;&lt;td class=&quot;rouge-gutter gl&quot;&gt;&lt;pre class=&quot;lineno&quot;&gt;1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+31
+32
+33
+34
+35
+36
+37
+38
+39
+40
+41
+42
+43
+44
+&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;rouge-code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;c&quot;&gt;#if条件&lt;/span&gt;
+&lt;span class=&quot;k&quot;&gt;if &lt;/span&gt;condition
+&lt;span class=&quot;k&quot;&gt;then
+		&lt;/span&gt;command1
+&lt;span class=&quot;k&quot;&gt;elif &lt;/span&gt;condition2
+&lt;span class=&quot;k&quot;&gt;then
+		&lt;/span&gt;command2
+&lt;span class=&quot;k&quot;&gt;else
+		&lt;/span&gt;command3
+&lt;span class=&quot;k&quot;&gt;fi&lt;/span&gt;
+
+
+&lt;span class=&quot;c&quot;&gt;#for循环&lt;/span&gt;
+&lt;span class=&quot;k&quot;&gt;for &lt;/span&gt;var &lt;span class=&quot;k&quot;&gt;in &lt;/span&gt;i1 i2 i3
+&lt;span class=&quot;k&quot;&gt;do 
+		&lt;/span&gt;command1
+		command2
+&lt;span class=&quot;k&quot;&gt;done&lt;/span&gt;
+
+
+&lt;span class=&quot;c&quot;&gt;#while循环&lt;/span&gt;
+&lt;span class=&quot;k&quot;&gt;while &lt;/span&gt;condition
+&lt;span class=&quot;k&quot;&gt;do
+		&lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;command
+&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;done&lt;/span&gt;
+	
+	
+&lt;span class=&quot;c&quot;&gt;#until循环:和while循环相反，直到条件为true时停止(用得少)&lt;/span&gt;
+&lt;span class=&quot;k&quot;&gt;until &lt;/span&gt;condition
+&lt;span class=&quot;k&quot;&gt;do 
+		&lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;command
+&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;done&lt;/span&gt;
+
+
+&lt;span class=&quot;c&quot;&gt;#case&lt;/span&gt;
+&lt;span class=&quot;k&quot;&gt;case&lt;/span&gt; array &lt;span class=&quot;k&quot;&gt;in 
+	&lt;/span&gt;1&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;command&lt;/span&gt;
+	&lt;span class=&quot;p&quot;&gt;;;&lt;/span&gt;
+	2&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;command&lt;/span&gt;
+	&lt;span class=&quot;p&quot;&gt;;;&lt;/span&gt;
+	&lt;span class=&quot;k&quot;&gt;*&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;command&lt;/span&gt;
+	&lt;span class=&quot;p&quot;&gt;;;&lt;/span&gt;
+&lt;span class=&quot;k&quot;&gt;esac&lt;/span&gt;
+
+&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;h2 id=&quot;运算符&quot;&gt;运算符&lt;/h2&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;原生bash不支持数学运算，但可以用awk和expr来进行求值操作。&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;div class=&quot;language-shell highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;table class=&quot;rouge-table&quot;&gt;&lt;tbody&gt;&lt;tr&gt;&lt;td class=&quot;rouge-gutter gl&quot;&gt;&lt;pre class=&quot;lineno&quot;&gt;1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;rouge-code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;c&quot;&gt;#数学运算&lt;/span&gt;
+&lt;span class=&quot;nv&quot;&gt;val&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;sb&quot;&gt;`&lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;expr &lt;/span&gt;2 + 2&lt;span class=&quot;sb&quot;&gt;`&lt;/span&gt; &lt;span class=&quot;c&quot;&gt;#!!!表达式和运算法之间一定要有空格&lt;/span&gt;
+
+&lt;span class=&quot;c&quot;&gt;#关系运算&lt;/span&gt;
+&lt;span class=&quot;nt&quot;&gt;-eq&lt;/span&gt;   &lt;span class=&quot;c&quot;&gt;#equal&lt;/span&gt;
+&lt;span class=&quot;nt&quot;&gt;-ne&lt;/span&gt;   &lt;span class=&quot;c&quot;&gt;#not equal&lt;/span&gt;
+&lt;span class=&quot;nt&quot;&gt;-gt&lt;/span&gt;   &lt;span class=&quot;c&quot;&gt;#great than&lt;/span&gt;
+&lt;span class=&quot;nt&quot;&gt;-lt&lt;/span&gt;   &lt;span class=&quot;c&quot;&gt;#lower than&lt;/span&gt;
+&lt;span class=&quot;nt&quot;&gt;-ge&lt;/span&gt;   &lt;span class=&quot;c&quot;&gt;#great equal&lt;/span&gt;
+&lt;span class=&quot;nt&quot;&gt;-le&lt;/span&gt;   &lt;span class=&quot;c&quot;&gt;#lower equal&lt;/span&gt;
+
+&lt;span class=&quot;c&quot;&gt;#布尔运算&lt;/span&gt;
+&lt;span class=&quot;o&quot;&gt;!&lt;/span&gt;    &lt;span class=&quot;c&quot;&gt;#非&lt;/span&gt;
+&lt;span class=&quot;nt&quot;&gt;-o&lt;/span&gt;   &lt;span class=&quot;c&quot;&gt;#或，有一个为true即为true （or）&lt;/span&gt;
+&lt;span class=&quot;nt&quot;&gt;-a&lt;/span&gt;   &lt;span class=&quot;c&quot;&gt;#与，两个都为true才为true （and）&lt;/span&gt;
+
+&lt;span class=&quot;c&quot;&gt;#逻辑运算&lt;/span&gt;
+&lt;span class=&quot;o&quot;&gt;&amp;amp;&amp;amp;&lt;/span&gt;  &lt;span class=&quot;c&quot;&gt;#逻辑的and [[ $a -lt 100 &amp;amp;&amp;amp; $b -gt 100 ]] 返回 false&lt;/span&gt;
+&lt;span class=&quot;o&quot;&gt;||&lt;/span&gt;  &lt;span class=&quot;c&quot;&gt;#逻辑的or  [[ $a -lt 100 || $b -gt 100 ]] 返回 true&lt;/span&gt;
+&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;h2 id=&quot;脚本参数&quot;&gt;脚本参数&lt;/h2&gt;
+
+&lt;div class=&quot;language-shell highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;table class=&quot;rouge-table&quot;&gt;&lt;tbody&gt;&lt;tr&gt;&lt;td class=&quot;rouge-gutter gl&quot;&gt;&lt;pre class=&quot;lineno&quot;&gt;1
+2
+3
+4
+5
+6
+7
+&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;rouge-code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;nv&quot;&gt;$# &lt;/span&gt; &lt;span class=&quot;c&quot;&gt;#传递到脚本的参数个数&lt;/span&gt;
+&lt;span class=&quot;nv&quot;&gt;$*&lt;/span&gt;  &lt;span class=&quot;c&quot;&gt;#显示所有向脚本传递的参数&lt;/span&gt;
+&lt;span class=&quot;nv&quot;&gt;$$&lt;/span&gt;  &lt;span class=&quot;c&quot;&gt;#脚本当前运行的进程ID号&lt;/span&gt;
+&lt;span class=&quot;nv&quot;&gt;$!&lt;/span&gt;  &lt;span class=&quot;c&quot;&gt;#后台运行的最后一个进程的ID号&lt;/span&gt;
+&lt;span class=&quot;nv&quot;&gt;$@&lt;/span&gt;  &lt;span class=&quot;c&quot;&gt;#用引号分割，显示所有脚本参数&lt;/span&gt;
+&lt;span class=&quot;nv&quot;&gt;$-&lt;/span&gt;  &lt;span class=&quot;c&quot;&gt;#显示shell使用的当前选项&lt;/span&gt;
+&lt;span class=&quot;nv&quot;&gt;$?&lt;/span&gt;  &lt;span class=&quot;c&quot;&gt;#显示最后命令的退出状态。0表示没有错误。&lt;/span&gt;
+&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+&lt;div class=&quot;language-shell highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;table class=&quot;rouge-table&quot;&gt;&lt;tbody&gt;&lt;tr&gt;&lt;td class=&quot;rouge-gutter gl&quot;&gt;&lt;pre class=&quot;lineno&quot;&gt;1
+2
+3
+4
+5
+6
+7
+8
+&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;rouge-code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;c&quot;&gt;#注释相关&lt;/span&gt;
+:&amp;lt;&amp;lt;&lt;span class=&quot;s1&quot;&gt;'
+这是一段多行注释'&lt;/span&gt;
+
+:&amp;lt;&amp;lt;&lt;span class=&quot;o&quot;&gt;!&lt;/span&gt;
+这也可以是一段多行注释!
+
+&lt;span class=&quot;c&quot;&gt;#如果在开发过程中，遇到大段的代码需要临时注释起来，过一会儿又取消注释，怎么办呢？每一行加个'#'符号太费力了，可以把这一段要注释的代码用一对花括号括起来，定义成一个函数，没有地方调用这个函数，这块代码就不会执行，达到了和注释一样的效果。&lt;/span&gt;
+&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;h2 id=&quot;set-命令&quot;&gt;set 命令&lt;/h2&gt;
+
+&lt;p&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;set&lt;/code&gt;命令主要用来设置shell，在编写shell脚本时，使用&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;set&lt;/code&gt;命令能设置shell的执行方式，根据需求不同，采用的参数设置也不同。&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;set&lt;/code&gt;命令也用来显示系统中已存在的shell变量以及设置新的shell变量。&lt;/p&gt;
+
+&lt;div class=&quot;language-shell highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;table class=&quot;rouge-table&quot;&gt;&lt;tbody&gt;&lt;tr&gt;&lt;td class=&quot;rouge-gutter gl&quot;&gt;&lt;pre class=&quot;lineno&quot;&gt;1
+2
+3
+4
+5
+6
+&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;rouge-code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;nb&quot;&gt;set&lt;/span&gt;     &lt;span class=&quot;c&quot;&gt;#显示环境变量&lt;/span&gt;
+&lt;span class=&quot;nb&quot;&gt;set&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;-e&lt;/span&gt;  &lt;span class=&quot;c&quot;&gt;#只要脚本中发生错误，就停止执行并退出shell（否则虽然报错，但是依旧会继续运行&lt;/span&gt;
+&lt;span class=&quot;nb&quot;&gt;set&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;-u&lt;/span&gt;  &lt;span class=&quot;c&quot;&gt;#如果遇到不存在的变量会报错并停止执行（否则不报错，也继续执行）&lt;/span&gt;
+&lt;span class=&quot;nb&quot;&gt;set&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;-x&lt;/span&gt; 
+
+&lt;span class=&quot;c&quot;&gt;## tips：set后的后缀改成+号则会关闭该功能。&lt;/span&gt;
+&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;</content><author><name>Wang Ziduan</name></author><category term="code" /><category term="环境搭建" /><summary type="html">Linux</summary></entry><entry><title type="html">统计学相关知识</title><link href="http://localhost:4000/posts/statistical" rel="alternate" type="text/html" title="统计学相关知识" /><published>2020-07-22T00:00:00+00:00</published><updated>2020-07-22T00:00:00+00:00</updated><id>http://localhost:4000/posts/%E7%BB%9F%E8%AE%A1%E5%AD%A6%E7%9B%B8%E5%85%B3%E7%9F%A5%E8%AF%86</id><content type="html" xml:base="http://localhost:4000/posts/statistical"></content><author><name>Wang Ziduan</name></author><category term="统计" /><category term="理论" /><summary type="html"></summary></entry></feed>

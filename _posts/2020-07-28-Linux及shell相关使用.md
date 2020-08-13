@@ -1,7 +1,8 @@
 ---
+layout: post
 title: 'Linux及shell相关使用'
 date: 2020-07-28
-permalink: /posts/2012/08/blog-post-1/
+permalink: /posts/linux
 tags:
   - code
   - 环境搭建

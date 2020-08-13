@@ -1,0 +1,35 @@
+[
+  
+    {
+      "title"    : "【笔记】机器学习(西瓜书) 周志华",
+      "subtitle" : "",
+      "tags"     : "编程, 机器学习, 理论",
+      "url"      : "/posts/xiguashu/",
+      "date"     : "2020-08-03 00:00:00 +0000"
+    } ,
+  
+    {
+      "title"    : "Linux及shell相关使用",
+      "subtitle" : "",
+      "tags"     : "code, 环境搭建",
+      "url"      : "/posts/linux",
+      "date"     : "2020-07-28 00:00:00 +0000"
+    } ,
+  
+    {
+      "title"    : "Git及Github相关使用",
+      "subtitle" : "",
+      "tags"     : "code, 环境搭建",
+      "url"      : "/posts/github",
+      "date"     : "2020-07-28 00:00:00 +0000"
+    } ,
+  
+    {
+      "title"    : "统计学相关知识",
+      "subtitle" : "",
+      "tags"     : "统计, 理论",
+      "url"      : "/posts/statistical",
+      "date"     : "2020-07-22 00:00:00 +0000"
+    } 
+  
+]

@@ -1,7 +1,9 @@
 ---
+layout: post
 title: 'Git及Github相关使用'
 date: 2020-07-28
-permalink: /posts/2012/08/blog-post-1/
+permalink: /posts/github
+categories: 笔记
 tags:
   - code
   - 环境搭建
