@@ -3,7 +3,7 @@
 
 # Site settings
 locale : "zh-CN"
-title  : "王子段 | WangZiduan "
+title  : 王子段 | WangZiduan
 name : &name "Wang Ziduan"
 description : &description "写写代码撸撸猫,记记笔记拍拍照."
 url : https://wj19816.github.io/testblog.github.io
@@ -76,3 +76,26 @@ whitelist:
 
 # MathJax rendering for layout:page (e.g. post preview)
 page-mathjax: false
+
+
+# Collections
+collections:
+  note:
+    output: true
+    permalink: /:collection/:title
+  dailys:
+    output: true
+    permalink: /:collection/:title
+  project:
+    output: true
+    permalink: /:collection/:title
+  
+
+
+# Handling Reading
+safe:         false
+keep_files:   [".git", ".svn"]
+encoding:     "utf-8"
+markdown_ext: "markdown,mkdown,mkdn,mkd,md"
+
+excerpt_separator: <!--more-->  #摘录

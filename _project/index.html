@@ -1,12 +1,11 @@
 ---
 layout: page
-title: "欢迎来到小王的秘密基地~🤩"
-header-img : "img/home-bg.jpg"
+title: "PROJECT"
+header-img : "img/post-bg-css.jpg"
 description: "You will never know unless you try."
 ---
-{% assign posts_hide= site.posts | where:"categories","hide" %}
-{% assign posts = site.posts | remove: posts_hide | concat: site.project | concat: site.note | concat: site.dailys | where:"layout","post"%}
 
+{% assign posts=site.project | where:"layout","post" %}
 {% for post in posts %}
 <div class="post-preview">
     <a href="{{ post.url | prepend: site.baseurl }}">
@@ -18,13 +17,6 @@ description: "You will never know unless you try."
             {{ post.subtitle }}
         </h3>
         {% endif %}
-        <div class="post-content-preview">
-            {% if post.lang == 'en' %}
-                {{ post.content | strip_html | truncatewords: 10 }}
-            {% else %}
-                {{ post.content | strip_html | truncatewords: 10 }}
-            {% endif %}
-        </div>
     </a>
     <p class="post-meta">
         Posted on {{ post.date | date: "%B %-d, %Y" }}

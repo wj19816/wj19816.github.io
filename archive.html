@@ -12,6 +12,8 @@ https://github.com/kitian616/jekyll-TeXt-theme
 <!-- Page Header -->
 {% include intro-header.html type='page' short=true %}
 
+
+
 <!-- Main Content -->
 <div class="container">
 	<div class="row">
@@ -19,18 +21,18 @@ https://github.com/kitian616/jekyll-TeXt-theme
 			<!-- Tags (as filter) -->
 			<div id='tag_cloud' class="tags tags-sup js-tags">
 				<a class="tag-button--all" data-encode="">
-					Show All
-					<sup>{{site.posts.size}}</sup>
+					ShowAll
+					<sup>{{posts.size}}</sup>
 				</a>
-
+				{% assign posts_hide= site.posts | where:"categories","hide" %}
+				{% assign posts = site.posts | remove: posts_hide | concat: site.project | concat: site.note | concat: site.dailys | where:"layout","post"%}
 				{% capture tags %}
 				{% for tag in site.tags %}
-				<a data-sort="{{ site.posts.size | minus: tag[1].size | prepend: '0000' | slice: -4, 4 }}"
+				<a data-sort="{{ posts.size | minus: tag[1].size | prepend: '0000' | slice: -4, 4 }}"
 					data-encode="{{ tag[0] | strip | url_encode }}"
 					class="tag-button"
 					title="{{ tag[0] }}" rel="{{ tag[1].size }}">
 					{{ tag[0] }}
-					<sup>{{tag[1].size}}</sup>
 				</a>__SEPERATOR__
 				{% endfor %}
 				{% endcapture %}
@@ -39,7 +41,7 @@ https://github.com/kitian616/jekyll-TeXt-theme
 
             <!-- Article List -->
 			<div class="mini-post-list js-result d-none">
-			{%- assign _sorted_list = site.posts -%}
+			{%- assign _sorted_list = posts -%}
 			{%- assign _sorted_list = _sorted_list | sort: 'date' -%}
 			{%- assign _sorted_list = _sorted_list | reverse -%}
 

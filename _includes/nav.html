@@ -21,7 +21,13 @@
                 <div class="navbar-collapse">
                     <ul class="nav navbar-nav navbar-right">
                         <li>
-                            <a href="{{ site.baseurl }}/">Home</a>
+                            <a href="{{ site.baseurl }}/note/">NOTE</a>
+                        </li>
+                        <li>
+                            <a href="{{ site.baseurl }}/project/">Project</a>
+                        </li>
+                        <li>
+                            <a href="{{ site.baseurl }}/dailys/">Daily&Hobby</a>
                         </li>
                         {% for page in site.pages %}
                         {% if page.title and page.hide-in-nav != true %}
