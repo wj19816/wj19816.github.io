@@ -7,7 +7,7 @@ permalink: /note/hadoop
 tags:
   - 机器学习
   - 编程
-  - 分布式
+  - 计算机
 ---
 
 

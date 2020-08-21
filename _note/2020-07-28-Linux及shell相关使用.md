@@ -4,8 +4,8 @@ title: 'Linux及shell相关使用'
 date: 2020-07-28
 permalink: /posts/linux
 tags:
-  - code
-  - 环境搭建
+  - 计算机
+  - 编程
 
 ---
 
