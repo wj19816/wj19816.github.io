@@ -43,6 +43,15 @@ git add .
 git commit -m ""
 git remote add origin ... #和远程仓库匹配
 git push -u origin master
+
+#上传本地分支到远程新的分支
+git branch test
+git checkout test
+git remote add origin ... #和远程仓库匹配
+git push origin test
+
+#拉取指定分支到本地
+git clone -b <指定分支名> <远程仓库地址>
 ```
 
 
