@@ -1,0 +1,77 @@
+I"2<blockquote>
+  <p>”他們用自己的去眼睛去看別人看過的東西，在別人司空見慣的東西上發現出美來。“</p>
+</blockquote>
+
+<h1 id="修图技巧">修图技巧</h1>
+
+<h2 id="磨皮">磨皮</h2>
+
+<ul>
+  <li><strong>通道磨皮</strong>：
+    <ul>
+      <li>复制图层→通道→绿色通道→复制通道→滤镜高反差保留（16）→图像→计算→混合选择强光（计算3次）</li>
+      <li>→contrl+第三个图层</li>
+      <li>→反向→单击RGB通道</li>
+      <li>→contrl+J提出图层</li>
+      <li>→contrl+M图层曲线</li>
+      <li>→向上拉一点曲线</li>
+    </ul>
+  </li>
+  <li><strong>中性灰磨皮</strong>：
+    <ul>
+      <li>Ctrl+shift+N 新建图层 【模式：柔光  不透明度100% 填充50%灰色】</li>
+      <li>在中性灰图层上用画笔涂改</li>
+    </ul>
+  </li>
+  <li>块状磨皮：
+    <ul>
+      <li>吸管取周围皮肤→画笔（透明度15% 流量30%）</li>
+    </ul>
+  </li>
+</ul>
+
+<h2 id="加质感">加质感</h2>
+
+<ul>
+  <li><strong>高反差保留方式</strong>：
+    <ul>
+      <li>滤镜→其他→高反差保留（半径1.6）</li>
+      <li>→图层模式改为线性光</li>
+    </ul>
+  </li>
+</ul>
+
+<h2 id="ps快捷键">PS快捷键</h2>
+
+<table>
+  <thead>
+    <tr>
+      <th style="text-align: center">功能</th>
+      <th style="text-align: center">快捷键</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td style="text-align: center">循环切换快捷键</td>
+      <td style="text-align: center">SHIFT+J</td>
+    </tr>
+    <tr>
+      <td style="text-align: center">前景色和背景色转化</td>
+      <td style="text-align: center">X</td>
+    </tr>
+    <tr>
+      <td style="text-align: center">拷贝图层</td>
+      <td style="text-align: center">COMMEND+J</td>
+    </tr>
+    <tr>
+      <td style="text-align: center">从图层中复制</td>
+      <td style="text-align: center">CTRL+J</td>
+    </tr>
+    <tr>
+      <td style="text-align: center">新建图层</td>
+      <td style="text-align: center">CTRL+SHIFT+N</td>
+    </tr>
+  </tbody>
+</table>
+
+:ET

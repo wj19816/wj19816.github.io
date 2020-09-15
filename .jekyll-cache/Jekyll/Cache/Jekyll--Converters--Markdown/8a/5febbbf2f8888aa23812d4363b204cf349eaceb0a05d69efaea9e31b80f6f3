@@ -1,0 +1,23 @@
+I"�<h1 id="安装pytorch">安装pytorch</h1>
+
+<p><strong>确认自己的系统版本</strong></p>
+
+<div class="language-shell highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+</pre></td><td class="rouge-code"><pre><span class="nb">cat</span> /etc/redhat-release <span class="c">#查看系统版本</span>
+<span class="nb">cat</span> /usr/local/cuda/version.txt <span class="c">#确定CUDA版本</span>
+
+conda create <span class="nt">-n</span> pytorch <span class="nv">python</span><span class="o">=</span>2.7 <span class="c">#新建虚拟环境，可以指定版本(python=2.7/3.6)</span>
+<span class="nb">source </span>activate pytorch <span class="c">#激活虚拟环境</span>
+conda deactivate <span class="c">#退出虚拟环境</span>
+conda remove <span class="nt">-n</span> pytorch <span class="nt">--all</span> <span class="c">#移除虚拟环境</span>
+</pre></td></tr></tbody></table></code></pre></div></div>
+
+<p><strong>安装</strong>：根据电脑配置，得到<a href="https://pytorch.org/">官网</a>上的安装命令，即可。</p>
+
+:ET

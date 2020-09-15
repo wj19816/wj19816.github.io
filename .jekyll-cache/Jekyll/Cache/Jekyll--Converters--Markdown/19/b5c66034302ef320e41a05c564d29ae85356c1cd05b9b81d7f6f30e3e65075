@@ -1,4 +1,4 @@
-I"�C<h1 id="linux">Linux</h1>
+I"�D<h1 id="linux">Linux</h1>
 
 <div class="language-shell highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
 2
@@ -38,6 +38,8 @@
 36
 37
 38
+39
+40
 </pre></td><td class="rouge-code"><pre><span class="c"># 一些简单的常用操作</span>
 <span class="c">## tips:按tab键可以快速填充</span>
 
@@ -58,6 +60,7 @@
 <span class="c">#如果destination为文件名，则重命名</span>
 
 <span class="nb">mv</span> <span class="nt">-f</span> <span class="nt">-u</span> <span class="c">#移动文件与目录，或修改名称：-f 强制删除 -i 询问是否覆盖 -u 若已存在，而source比较新，才会升级</span>
+<span class="nb">mv</span> /usr/lib/<span class="k">*</span>  /zone#把文件夹下所有文件移动到当前文件夹
 
 ./test.sh <span class="c">#运行某个shell脚本，必须要加上“./”，如果不加，系统会去/bin之类的系统目录里查找该文件</span>
 
@@ -70,6 +73,7 @@ less xxx    <span class="c">#分页显示文件内容，但可以向前翻页 ?�
 <span class="nb">head</span> <span class="nt">-n</span> 20 xxx    <span class="c">#只看前几行,默认显示10行</span>
 <span class="nb">tail </span>xxx    <span class="c">#只看最后几行</span>
 
+<span class="nb">nohup</span> .... <span class="o">&gt;</span> output.log 2&gt;&amp;1 &amp; <span class="c">#后台运行</span>
 
 
 <span class="c"># 关机操作</span>

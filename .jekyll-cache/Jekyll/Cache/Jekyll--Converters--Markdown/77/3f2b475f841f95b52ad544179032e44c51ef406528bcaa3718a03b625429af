@@ -1,0 +1,70 @@
+I"�<h1 id="概述">概述</h1>
+
+<blockquote>
+  <p>定义：给定由特征空间$X$和边缘概率分布$P(X)$组成的源域（source domain）$D_s$和学习任务$T_s$，和同样由特征空间和边缘概率分布组成的目标域（target domain）$D_t$和学习任务$T_t$，迁移学习的目的在于利用$D_s$和$T_s$中的知识来帮助学习在目标域$D_t$的目标函数$f_T(·)$的过程，注意$D_s$与$D_t$不相等、$T_s$与$T_t$不相等。</p>
+</blockquote>
+
+<p>对于一个深度网络，随着网络层数的加深，网络越来越依赖于特定任务；而浅层相对来说只是学习一个大概的特征。不同任务的网络中，浅层的特征基本是通用的。这就启发我们，如果要适配一个网络，重点是要适配高层——那些task-specific的层。</p>
+
+<h2 id="发展瓶颈">发展瓶颈</h2>
+
+<ul>
+  <li>其一，如何在现有的训练好的模型中选择合适当前任务的模型；</li>
+  <li>其二，如何确定还需要多少数据来训练模型；</li>
+  <li>其三，预训练应该在什么时候停止；</li>
+  <li>其四，当出现新的数据或更好的算法，如何更新预训练模型。</li>
+</ul>
+
+<h2 id="专有名词及代表">专有名词及代表</h2>
+
+<ul>
+  <li>$\mathcal{D}$：领域$Domain$，$\mathcal{D_s}$=源域，$\mathcal{D_t}$=目标域</li>
+  <li>$\mathcal{X}$：数据的特征空间</li>
+  <li>$\mathcal{Y}$：标签空间</li>
+  <li>$f(·)$：学习函数</li>
+</ul>
+
+<p><img src="/Users/didi/Library/Application Support/typora-user-images/image-20200818192418183.png" alt="image-20200818192418183" /></p>
+
+<h1 id="具体模型">具体模型</h1>
+
+<h2 id="dandeep-adaptation-network-深度适配网络">DAN(Deep Adaptation Network, 深度适配网络)</h2>
+
+<p>基于DDC发展的。<a href="File:///Users/didi/Desktop/wj19816.github.io/files/Deep Adaptation Network.pdf">参考论文</a>。</p>
+
+<table>
+  <tbody>
+    <tr>
+      <td><strong>领域自适应 (Domain Adaptation)</strong>: 给定一个有标记的源域 $\mathcal{D_s} = {x_i, y_i}^n_{i=1}$ 和一个 无标记的目标域 $\mathcal{D_t} = {x_j}^{n+m}_{j=n+1}$ ，假定它们的特征空间相同，即$\mathcal{X_s=X_t}$，并且它们的类别空间也相同，$\mathcal{Y_s=Y_t}$以及条件概率分布也相同，即$\mathcal{Q_s(y_s</td>
+      <td>x_s)=Q_t(y_t</td>
+      <td>x_t)}$。但是这两个</td>
+    </tr>
+  </tbody>
+</table>
+
+<p>域的边缘分布不同，即 $P_s(x_s)\neq P_t(x_t)$。迁移学习的目标就是，利用有标记的数据$\mathcal{D_s}$去学习一个分类器$f:x_t\rightarrow y_t$来预测目标域Dt 的标签$y_t\in\mathcal{Y_t}$.</p>
+
+<p><strong>优点：</strong></p>
+
+<ul>
+  <li>
+    <p>适配了多层网络</p>
+  </li>
+  <li>
+    <p>使用了多核MMD</p>
+
+    <blockquote>
+      <p><strong>MMD(Maximum mean discrepancy)：</strong>最大均值距离。度量在再生希尔伯特空间中两个分布的距离，是一种核学习方法。<img src="https://images2015.cnblogs.com/blog/140867/201706/140867-20170620151726741-1629954217.png" alt="img" /></p>
+
+      <blockquote>
+        <p>近年来，MMD越来越多地应用在迁移学习中。在迁移学习环境下训练集和测试集分别取样自分布p和q，两类样本集不同但相关。我们可以利用深度神经网络的特征变换能力，来做特征空间的变换，直到变换后的特征分布相匹配，这个过程可以是source domain一直变换直到匹配target domain。匹配的度量方式就是MMD。</p>
+      </blockquote>
+
+      <p>参考链接：https://zhuanlan.zhihu.com/p/25418364</p>
+    </blockquote>
+  </li>
+</ul>
+
+<p><img src="https://pic4.zhimg.com/80/v2-5166a679f33ebe8b240fdead168bd61c_1440w.jpg" alt="img" /></p>
+
+:ET

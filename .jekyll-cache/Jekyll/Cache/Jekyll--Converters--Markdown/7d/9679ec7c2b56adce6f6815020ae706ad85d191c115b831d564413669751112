@@ -1,4 +1,5 @@
-I"%	<h1 id="github">Github</h1>
+I"�
+<h1 id="github">Github</h1>
 
 <div class="language-shell highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
 2
@@ -29,6 +30,15 @@
 27
 28
 29
+30
+31
+32
+33
+34
+35
+36
+37
+38
 </pre></td><td class="rouge-code"><pre><span class="c">#从github拉取项目到本地</span>
 git clone https://
 
@@ -58,6 +68,15 @@ git add <span class="nb">.</span>
 git commit <span class="nt">-m</span> <span class="s2">""</span>
 git remote add origin ... <span class="c">#和远程仓库匹配</span>
 git push <span class="nt">-u</span> origin master
+
+<span class="c">#上传本地分支到远程新的分支</span>
+git branch <span class="nb">test
+</span>git checkout <span class="nb">test
+</span>git remote add origin ... <span class="c">#和远程仓库匹配</span>
+git push origin <span class="nb">test</span>
+
+<span class="c">#拉取指定分支到本地</span>
+git clone <span class="nt">-b</span> &lt;指定分支名&gt; &lt;远程仓库地址&gt;
 </pre></td></tr></tbody></table></code></pre></div></div>
 
 <h1 id="git-page">Git Page</h1>

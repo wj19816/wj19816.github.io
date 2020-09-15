@@ -45,21 +45,30 @@
 27
 28
 29
+30
+31
+32
+33
+34
+35
+36
+37
+38
 #从github拉取项目到本地
 git clone https://
 
 #提交修改
 git add .
 git commit -m "修改信息"
-git push origin master # master可以改为其它任...">
+git push or...">
     
     <meta property="article:published_time" content="2020-07-28T00:00:00Z">
     
     
     
-    <meta property="article:tag" content="code">
+    <meta property="article:tag" content="编程">
     
-    <meta property="article:tag" content="环境搭建">
+    <meta property="article:tag" content="计算机">
     
     
     <meta property="og:image" content="http://localhost:4000/img/touxiang.png">
@@ -278,9 +287,9 @@ git push origin master # master可以改为其它任...">
                 <div class="post-heading">
                     <div class="tags">
                         
-                        <a class="tag" href="/archive/?tag=code" title="code">code</a>
+                        <a class="tag" href="/archive/?tag=%E7%BC%96%E7%A8%8B" title="编程">编程</a>
                         
-                        <a class="tag" href="/archive/?tag=%E7%8E%AF%E5%A2%83%E6%90%AD%E5%BB%BA" title="环境搭建">环境搭建</a>
+                        <a class="tag" href="/archive/?tag=%E8%AE%A1%E7%AE%97%E6%9C%BA" title="计算机">计算机</a>
                         
                     </div>
                     <h1>Git及Github相关使用</h1>
@@ -343,6 +352,15 @@ git push origin master # master可以改为其它任...">
 27
 28
 29
+30
+31
+32
+33
+34
+35
+36
+37
+38
 </pre></td><td class="rouge-code"><pre><span class="c">#从github拉取项目到本地</span>
 git clone https://
 
@@ -372,6 +390,15 @@ git add <span class="nb">.</span>
 git commit <span class="nt">-m</span> <span class="s2">""</span>
 git remote add origin ... <span class="c">#和远程仓库匹配</span>
 git push <span class="nt">-u</span> origin master
+
+<span class="c">#上传本地分支到远程新的分支</span>
+git branch <span class="nb">test
+</span>git checkout <span class="nb">test
+</span>git remote add origin ... <span class="c">#和远程仓库匹配</span>
+git push origin <span class="nb">test</span>
+
+<span class="c">#拉取指定分支到本地</span>
+git clone <span class="nt">-b</span> &lt;指定分支名&gt; &lt;远程仓库地址&gt;
 </pre></td></tr></tbody></table></code></pre></div></div>
 
 <h1 id="git-page">Git Page</h1>
