@@ -11,38 +11,40 @@
     <meta name="theme-color" content="">
     
     <!-- Open Graph -->
-    <meta property="og:title" content="各种安装 - ">
+    <meta property="og:title" content="【笔记】因子投资：方法与实践 - ">
     
     <meta property="og:type" content="article">
-    <meta property="og:description" content="安装pytorch
+    <meta property="og:description" content="因子投资：方法与实践
 
-确认自己的系统版本
+第二章 因子投资方法论
 
-1
-2
-3
-4
-5
-6
-7
-cat /etc/redhat-release #查看系统版本
-cat /usr/local/cuda/version.txt #确定CUDA版本
+2.1 投资组合排序法
 
-conda create -n pytorch python=2.7 #新建虚拟环境，可以指定版本(python=2.7/3.6)
-source activate pyto...">
+
+  
+    因子模拟投资组合
+
     
-    <meta property="article:published_time" content="2020-08-17T00:00:00Z">
+      定义：使用股票资产、围绕某目标因子构建的投资组合。
+
+      
+        条件1：该投资组合仅在目标因子上有大于0的暴露，即该组合的收益率应该仅由目标因子驱动。
+        条件2：在所有满足条件1的投资组合中，该组合的特质性风险最小。（避免特质...">
+    
+    <meta property="article:published_time" content="2020-09-15T00:00:00Z">
     
     
     
-    <meta property="article:tag" content="计算机">
+    <meta property="article:tag" content="量化投资">
+    
+    <meta property="article:tag" content="投资">
     
     
     <meta property="og:image" content="http://localhost:4000/img/touxiang.png">
-    <meta property="og:url" content="http://localhost:4000/note/install">
+    <meta property="og:url" content="http://localhost:4000/notes/factorzoo">
     <meta property="og:site_name" content="">
     
-    <title>各种安装 - </title>
+    <title>【笔记】因子投资：方法与实践 - </title>
 
     <!-- Web App Manifest -->
     <link rel="manifest" href="/pwa/manifest.json">
@@ -51,7 +53,7 @@ source activate pyto...">
     <link rel="shortcut icon" href="/img/favicon.ico">
     
     <!-- Canonical URL -->
-    <link rel="canonical" href="http://localhost:4000/note/install">
+    <link rel="canonical" href="http://localhost:4000/notes/factorzoo">
 
     <!-- Bootstrap Core CSS -->
     <link rel="stylesheet" href="/css/bootstrap.min.css">
@@ -254,13 +256,15 @@ source activate pyto...">
                 <div class="post-heading">
                     <div class="tags">
                         
-                        <a class="tag" href="/archive/?tag=%E8%AE%A1%E7%AE%97%E6%9C%BA" title="计算机">计算机</a>
+                        <a class="tag" href="/archive/?tag=%E9%87%8F%E5%8C%96%E6%8A%95%E8%B5%84" title="量化投资">量化投资</a>
+                        
+                        <a class="tag" href="/archive/?tag=%E6%8A%95%E8%B5%84" title="投资">投资</a>
                         
                     </div>
-                    <h1>各种安装</h1>
+                    <h1>【笔记】因子投资：方法与实践</h1>
                     
-                    <h2 class="subheading">编程环境安全、系统配置等</h2>
-                    <span class="meta">Posted by 王子段 | WangZiduan on August 17, 2020</span>
+                    <h2 class="subheading"></h2>
+                    <span class="meta">Posted by 王子段 | WangZiduan on September 15, 2020</span>
                 </div>
             </div>
         </div>
@@ -286,27 +290,33 @@ source activate pyto...">
                 <!-- Multi-Lingual -->
                 
 
-				<h1 id="安装pytorch">安装pytorch</h1>
+				<h1 id="因子投资方法与实践">因子投资：方法与实践</h1>
 
-<p><strong>确认自己的系统版本</strong></p>
+<h2 id="第二章-因子投资方法论">第二章 因子投资方法论</h2>
 
-<div class="language-shell highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
-2
-3
-4
-5
-6
-7
-</pre></td><td class="rouge-code"><pre><span class="nb">cat</span> /etc/redhat-release <span class="c">#查看系统版本</span>
-<span class="nb">cat</span> /usr/local/cuda/version.txt <span class="c">#确定CUDA版本</span>
+<h3 id="21-投资组合排序法">2.1 投资组合排序法</h3>
 
-conda create <span class="nt">-n</span> pytorch <span class="nv">python</span><span class="o">=</span>2.7 <span class="c">#新建虚拟环境，可以指定版本(python=2.7/3.6)</span>
-<span class="nb">source </span>activate pytorch <span class="c">#激活虚拟环境</span>
-conda deactivate <span class="c">#退出虚拟环境</span>
-conda remove <span class="nt">-n</span> pytorch <span class="nt">--all</span> <span class="c">#移除虚拟环境</span>
-</pre></td></tr></tbody></table></code></pre></div></div>
+<ul>
+  <li>
+    <p>因子模拟投资组合</p>
 
-<p><strong>安装</strong>：根据电脑配置，得到<a href="https://pytorch.org/">官网</a>上的安装命令，即可。</p>
+    <blockquote>
+      <p><em>定义：使用股票资产、围绕某目标因子构建的投资组合。</em></p>
+
+      <ul>
+        <li>条件1：该投资组合仅在目标因子上有大于0的暴露，即该组合的收益率应该仅由目标因子驱动。</li>
+        <li>条件2：在所有满足条件1的投资组合中，该组合的特质性风险最小。（避免特质性风险的影响压过目标因子，从而导致因子收益率的计算出现误差。）</li>
+      </ul>
+    </blockquote>
+  </li>
+  <li>
+    <p>排序法（<em>仅适用于风格因子</em>)</p>
+
+    <blockquote>
+
+    </blockquote>
+  </li>
+</ul>
 
 
 
@@ -314,17 +324,17 @@ conda remove <span class="nt">-n</span> pytorch <span class="nt">--all</span> <s
                 <ul class="pager">
                     
                     <li class="previous">
-                        <a href="/note/hadoop" data-toggle="tooltip" data-placement="top" title="Hadoop、Spark及其他分布式系统相关">
+                        <a href="/note/install" data-toggle="tooltip" data-placement="top" title="各种安装">
                         Previous<br>
-                        <span>Hadoop、Spark及其他分布式系统相关</span>
+                        <span>各种安装</span>
                         </a>
                     </li>
                     
                     
                     <li class="next">
-                        <a href="/notes/factorzoo" data-toggle="tooltip" data-placement="top" title="【笔记】因子投资：方法与实践">
+                        <a href="/note/index" data-toggle="tooltip" data-placement="top" title="NOTE">
                         Next<br>
-                        <span>【笔记】因子投资：方法与实践</span>
+                        <span>NOTE</span>
                         </a>
                     </li>
                     

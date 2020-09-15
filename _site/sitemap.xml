@@ -18,7 +18,7 @@
 </url>
 <url>
 <loc>http://localhost:4000/dailys/index</loc>
-<lastmod>2020-09-15T05:49:26+00:00</lastmod>
+<lastmod>2020-09-15T05:51:09+00:00</lastmod>
 </url>
 <url>
 <loc>http://localhost:4000/posts/statistical</loc>
@@ -49,12 +49,12 @@
 <lastmod>2020-08-17T00:00:00+00:00</lastmod>
 </url>
 <url>
-<loc>http://localhost:4000/posts/linux</loc>
+<loc>http://localhost:4000/notes/factorzoo</loc>
 <lastmod>2020-09-15T00:00:00+00:00</lastmod>
 </url>
 <url>
 <loc>http://localhost:4000/note/index</loc>
-<lastmod>2020-09-15T05:49:26+00:00</lastmod>
+<lastmod>2020-09-15T05:51:09+00:00</lastmod>
 </url>
 <url>
 <loc>http://localhost:4000/posts/tags</loc>
@@ -66,7 +66,7 @@
 </url>
 <url>
 <loc>http://localhost:4000/project/index</loc>
-<lastmod>2020-09-15T05:49:26+00:00</lastmod>
+<lastmod>2020-09-15T05:51:09+00:00</lastmod>
 </url>
 <url>
 <loc>http://localhost:4000/about/</loc>
