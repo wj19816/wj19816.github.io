@@ -18,7 +18,7 @@
 </url>
 <url>
 <loc>http://localhost:4000/dailys/index</loc>
-<lastmod>2020-09-17T01:11:36+00:00</lastmod>
+<lastmod>2020-09-17T01:26:17+00:00</lastmod>
 </url>
 <url>
 <loc>http://localhost:4000/posts/statistical</loc>
@@ -58,7 +58,7 @@
 </url>
 <url>
 <loc>http://localhost:4000/note/index</loc>
-<lastmod>2020-09-17T01:11:36+00:00</lastmod>
+<lastmod>2020-09-17T01:26:17+00:00</lastmod>
 </url>
 <url>
 <loc>http://localhost:4000/posts/tags</loc>
@@ -70,7 +70,7 @@
 </url>
 <url>
 <loc>http://localhost:4000/project/index</loc>
-<lastmod>2020-09-17T01:11:36+00:00</lastmod>
+<lastmod>2020-09-17T01:26:17+00:00</lastmod>
 </url>
 <url>
 <loc>http://localhost:4000/about/</loc>
