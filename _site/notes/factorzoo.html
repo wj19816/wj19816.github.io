@@ -22,13 +22,10 @@
 
 其中，$E(R_i^e)$为资产的预期超额收益，$\beta_i$是因子暴露/因子载荷，$\lambda$是因子预期收益/因子溢价。
 
-$\alpha_i$：定价误差
+股票在某因子$i$上的暴露$\beta _i$反映的是在控制了其他因子后，该目标因子的收益率变化对股票超额收益变化的影响程度。
 
 
-  存在原因：
-    
-      模型设定偏误。(常用来检验是否存在异象因子)
-      样本误差。...">
+  因子代...">
     
     <meta property="article:published_time" content="2020-09-15T00:00:00Z">
     
@@ -309,25 +306,173 @@ $\alpha_i$：定价误差
 
 <p><strong>其中，$E(R_i^e)$为资产的预期超额收益，$\beta_i$是因子暴露/因子载荷，$\lambda$是因子预期收益/因子溢价。</strong></p>
 
-<h2 id="alpha_i定价误差">$\alpha_i$：定价误差</h2>
+<p>股票在某因子$i$上的暴露$\beta _i$反映的是在<strong>控制了其他因子后，该目标因子的收益率变化对股票超额收益变化的影响程度</strong>。</p>
 
 <ul>
-  <li>存在原因：
+  <li>因子代表了收益率的一种结构。一旦结构给定后，个股或者任何一个投资组合的预期收益率就完全由它在这些因子上的暴露决定了——暴露高，预期收益率就高。</li>
+  <li><strong>目的：如何找到这个最好的结构。</strong></li>
+</ul>
+
+<h2 id="alpha_i异象因子">$\alpha_i$：异象因子</h2>
+
+<ul>
+  <li>
+    <p><em>常用来检验是否存在异象因子</em></p>
+  </li>
+  <li>
+    <p>存在原因：</p>
     <ol>
-      <li>模型设定偏误。(<em>常用来检验是否存在异象因子</em>)</li>
-      <li>样本误差。</li>
+      <li>模型设定偏误。</li>
+      <li>样本误差。
+        <ul>
+          <li>$\alpha_i$不是显著$\ne$0，运气</li>
+          <li>$\alpha_i$显著$\ne$0，<strong>存在异象</strong>，错误定价，可以通过套利得到超额收益。</li>
+        </ul>
+      </li>
     </ol>
   </li>
 </ul>
 
-<h2 id="beta_ilambda因子配置">$\beta’_i\lambda$：因子配置</h2>
+<h2 id="beta_ilambda定价因子">$\beta’_i\lambda$：定价因子</h2>
+
+<blockquote>
+  <p>因子定义：一个因子描述了众多资产共同暴露的某种系统性风险，该风险是资产收益率背后的驱动力；因子收益率是这种系统性风险的风险溢价或风险补偿，是这些资产的共性收益。</p>
+</blockquote>
 
 <ul>
-  <li>股票在某因子$i$上的暴露$\beta _i$反映的是在<strong>控制了其他因子后，该目标因子的收益率变化对股票超额收益变化的影响程度</strong>。</li>
-  <li>多因子模型研究的核心问题：资产预期收益率在截面上——即不用的资产之间——为什么会有差异。</li>
-  <li>因子代表了收益率的一种结构。一旦结构给定后，个股或者任何一个投资组合的预期收益率就完全由它在这些因子上的暴露决定了——暴露高，预期收益率就高。</li>
-  <li><strong>目的：如何找到这个最好的结构。</strong></li>
-  <li></li>
+  <li>因子满足的必要条件：
+    <ul>
+      <li>因子驱动了资产收益率的共同运动，因子一定和资产收益率的协方差矩阵有关。<code class="language-plaintext highlighter-rouge">目前的因子模型都从金融学或经济学出发，没有直接从因子协方差矩阵和资产协方差矩阵的关系入手</code></li>
+      <li>长期看，因子可以获得正收益，因子必须<code class="language-plaintext highlighter-rouge">被定价</code>。</li>
+    </ul>
+  </li>
+  <li>选择因子的原则：
+    <ul>
+      <li>因子相互独立。每个因子都能对解释资产预期收益率截面差异有显著的增量贡献。</li>
+      <li>简约法则。一般不超过3-5个因子。</li>
+    </ul>
+  </li>
+</ul>
+
+<h2 id="时序角度">时序角度</h2>
+
+<h3 id="1-方差模型">1. 方差模型</h3>
+
+<p>把$N$个资产的时序多元回归模型放在一起：</p>
+
+\[R_t^e=\alpha+\beta\lambda_t+\varepsilon_i\]
+
+<p>其中，$R_{t}^e=[R_{1t}^e，R_{2t}^e，…,R_{Nt}^e]’$是$N$维超额收益向量；$\alpha=[\alpha_1,\alpha_2,…,\alpha_N]’$是$N$维定价误差向量；$\beta=[\beta_1,\beta_2,…,\beta_N]’$是$N\times K$因子暴露矩阵；$\varepsilon_t=[\varepsilon_{1t},\varepsilon_{2t},…,\varepsilon_{Nt}]’$是$N$维随机扰动向量，满足$E[\varepsilon_t]=0$以及$cov(\lambda_t,\varepsilon_t)=0$。</p>
+
+<p>得到方差模型：</p>
+
+\[\Sigma=\beta\Sigma_\lambda\beta'+\Sigma_\varepsilon\]
+
+<p>其中，$\Sigma(N阶)$为$N$个资产的协方差矩阵，$\Sigma_\lambda(K阶)$为$K$个因子的协方差矩阵，$\Sigma_\varepsilon(N阶)$为$N$个随机扰动的协方差矩阵。</p>
+
+<ul>
+  <li>
+    <p>学术界：方差模型==&gt;<em>因子的选择应当使$\beta\Sigma_\lambda\beta’$尽可能接近资产协方差矩阵$\Sigma$的非对角元素。</em><code class="language-plaintext highlighter-rouge">未来的一个重点</code></p>
+  </li>
+  <li>
+    <p>风险控制：通过多因子模型进行降维处理。通过因子协方差矩阵反推资产收益率的协方差矩阵，从而进行风险控制。</p>
+  </li>
+</ul>
+
+<h3 id="2-因子择时">2. 因子择时</h3>
+
+<blockquote>
+  <p>因子溢价是对其代表的系统性风险的补偿，但在时间序列上是有波动的</p>
+</blockquote>
+
+<h2 id="现状与问题">现状与问题</h2>
+
+<p><strong>三个问题：</strong></p>
+
+<ol>
+  <li>哪些因子是独立的？</li>
+  <li>哪些因子是重要的？</li>
+  <li>因子驱动资产价格的原因是什么？</li>
+</ol>
+
+<h3 id="研究目标">研究目标</h3>
+
+<table>
+  <thead>
+    <tr>
+      <th style="text-align: left"> </th>
+      <th style="text-align: left">学术界</th>
+      <th style="text-align: left">业界</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td style="text-align: left">$\beta’_i\lambda$：定价因子</td>
+      <td style="text-align: left">1. 如何找到”最好”的多因子模型：$\alpha_i→0$<br />2. 对主动基金管理人的业绩进行归因</td>
+      <td style="text-align: left">使用因子来获取超过基准的收益：找到$\lambda$大的因子， 并将更高的$\beta_i$配置在因子上</td>
+    </tr>
+    <tr>
+      <td style="text-align: left">$\alpha_i$：异象因子</td>
+      <td style="text-align: left">1. 评判市场是否有效，描述市场均衡状态的因子模型有误<br />2. 利用解释异象的能力来评价多因子模型的优劣</td>
+      <td style="text-align: left">考虑交易成本后，通过异象获得超额</td>
+    </tr>
+    <tr>
+      <td style="text-align: left">时序角度</td>
+      <td style="text-align: left">1. 因子和资产协方差矩阵有关<br />2. 择时：不同因子和宏观经济及投资者情绪之间的关系</td>
+      <td style="text-align: left">1. 风险控制<br />2. 因子择时：规避因子收益率较低的时刻</td>
+    </tr>
+  </tbody>
+</table>
+
+<h3 id="研究现状">研究现状</h3>
+
+<ul>
+  <li>学术界：
+    <ul>
+      <li>因子独立性：提出一些分析不同因子之间相关性的分析框架
+        <ul>
+          <li>提高因子显著性t值的阈值</li>
+          <li>识别对真正收益率有增量贡献的因子</li>
+        </ul>
+      </li>
+      <li>因子表现
+        <ul>
+          <li>发表后因子的样本外效果变差</li>
+          <li>由于研究中没有考虑交易费用\做空限制，因此会造成对因子收益率的高估</li>
+        </ul>
+      </li>
+      <li>构建复合因子</li>
+      <li>投资者情绪等与”人”相关的因子</li>
+      <li>宏观经济因子<em>（但现实情况不佳）</em></li>
+    </ul>
+  </li>
+  <li>业界：
+    <ul>
+      <li>收益预测vs风险管理</li>
+      <li>因子拥挤
+        <ul>
+          <li>任何投资策略想要持续赚钱都是利用了市场在某方面的非有效性</li>
+        </ul>
+      </li>
+      <li>因子择时
+        <ul>
+          <li>因子估值</li>
+          <li>因子动量择时</li>
+        </ul>
+      </li>
+      <li>区分$\alpha$和$\beta$收益
+        <ul>
+          <li>20%来自异象的高$\alpha$，80%来自选择了收益率高的因子并以高暴露配置在因子上得到$\beta$收益。</li>
+        </ul>
+      </li>
+      <li>创新：机器学习算法等引入</li>
+    </ul>
+  </li>
+  <li>投资者视角
+    <ul>
+      <li>风格因子指数：Smart Beta ETF产品（应该把费用的高低作为唯一的标准来选择）</li>
+    </ul>
+  </li>
 </ul>
 
 <h1 id="第二章-因子投资方法论">第二章 因子投资方法论</h1>
@@ -387,7 +532,7 @@ $\alpha_i$：定价误差
           <li>检验因子预期收益率：</li>
         </ol>
 
-\[\hat{\lambda}=\frac{1}{T}\sum_{t=1}^T\lambda_t ,\\ s.e.(\hat{\lambda})=\frac{std(\lambda_t)}{\sqrt{T}} ,\\ t-value=\frac{\hat{\lambda}}{s.e.(\hat{\lambda})}\sim t(T-1)\]
+\[(\hat{\lambda}=\frac{1}{T}\sum_{t=1}^T\lambda_t) ,\\ (s.e.(\hat{\lambda})=\frac{std(\lambda_t)}{\sqrt{T}}) , \\(t-value=\frac{\hat{\lambda}}{s.e.(\hat{\lambda})}\sim t(T-1))\]
 
         <ol>
           <li>检验$L$个投资组合的收益率单调性：\(\rho_s=\frac{cov(X_r,X_g)}{\sigma_{X_r}\sigma_{X_g}}\)</li>
@@ -427,20 +572,20 @@ $\alpha_i$：定价误差
 <ul>
   <li>步骤：
     <ol>
-      <li>对每个资产，使用简单最小二乘对模型进行时序回归，回归得到资产$i$在因子上的暴露$\hat{\beta_i}$向量，截距$\hat{\alpha_i}$，以及残差$\epsilon_{it}$</li>
+      <li>对每个资产，使用简单最小二乘对模型进行时序回归，回归得到资产$i$在因子上的暴露$\hat{\beta_i}$向量，截距$\hat{\alpha_i}$，以及残差$\varepsilon_{it}$</li>
       <li>将$R^e_{it}$和$\lambda_t$在时序上取均值</li>
     </ol>
   </li>
   <li><strong>GRS检验</strong>：检验定价误差$\alpha_i$是否联合为0。
     <ul>
-      <li>缺点：要求残差$\epsilon_{it}$之间不能存在相关性或者异方差。</li>
+      <li>缺点：要求残差$\varepsilon_{it}$之间不能存在相关性或者异方差。</li>
     </ul>
   </li>
   <li><strong>总结</strong>：
     <ol>
       <li>因子收益时序需已知。</li>
       <li>时序回归对每个资产单独进行，不以最小化所有$\hat{\alpha_i}$的平方和为目标。</li>
-      <li>若$\epsilon_{it}$满足iid正态分布，可以使用GRS检验，否则可以使用广义矩估计。
+      <li>若$\varepsilon_{it}$满足iid正态分布，可以使用GRS检验，否则可以使用广义矩估计。
         <h3 id="222-截面回归不常见但适用性更广">2.2.2 截面回归（<em>不常见，但适用性更广</em>）</h3>
       </li>
     </ol>
@@ -513,9 +658,9 @@ $\alpha_i$：定价误差
                     
                     
                     <li class="next">
-                        <a href="/note/index" data-toggle="tooltip" data-placement="top" title="NOTE">
+                        <a href="/notes/econometrics" data-toggle="tooltip" data-placement="top" title="【笔记】计量经济学">
                         Next<br>
-                        <span>NOTE</span>
+                        <span>【笔记】计量经济学</span>
                         </a>
                     </li>
                     
