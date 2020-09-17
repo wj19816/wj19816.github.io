@@ -51,6 +51,18 @@
     <![endif]-->
 
     <!-- ga & ba script hoook -->
+
+    <!-- 数学公式 -->
+    <script src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML" type="text/javascript"></script>
+    <script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+        tex2jax: {
+        skipTags: ['script', 'noscript', 'style', 'textarea', 'pre'],
+        inlineMath: [['$','$']]
+        }
+    });
+    </script>
+
     <script></script>
 </head>
 
@@ -483,7 +495,7 @@ Spark
         
         <div class="post-content-preview">
             
-                因子投资：方法与实践 第二章 因子投资方法论 2.1 投资组合排序法 因子模拟投资组合 定义：使用股票资产、围绕某目标因子构建的投资组合。 条件1：该投资组合仅在目标因子上有大于0的暴露，即该组合的收益率应该仅由目标因子驱动。 条件2：在所有满足条件1的投资组合中，该组合的特质性风险最小。（避免特质性风险的影响压过目标因子，从而导致因子收益率的计算出现误差。） 排序法（仅适用于风格因子)...
+                第一章 因子投资基础 核心公式: \[E(R_i^e)=\alpha_i+\beta'_i\lambda\] 其中，$E(R_i^e)$为资产的预期超额收益，$\beta_i$是因子暴露/因子载荷，$\lambda$是因子预期收益/因子溢价。 $\alpha_i$：定价误差 存在原因： 模型设定偏误。(常用来检验是否存在异象因子) 样本误差。 $\beta’_i\lambda$：因子配置...
             
         </div>
     </a>
