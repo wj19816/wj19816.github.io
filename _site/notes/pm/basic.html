@@ -11,28 +11,46 @@
     <meta name="theme-color" content="">
     
     <!-- Open Graph -->
-    <meta property="og:title" content="Transfer Learning 迁移学习 - ">
+    <meta property="og:title" content="【笔记】大数据分析-统计基础 - ">
     
     <meta property="og:type" content="article">
-    <meta property="og:description" content="概述
+    <meta property="og:description" content="课程要求
 
 
-  定义：给定由特征空间$X$和边缘概率分布$P(X)$组成的源域（source domain）$D_s$和学习任务$T_s$，和同样由特征空间和边缘概率分布组成的目标域（target domain）$D_t$和学习任务$T_t$，迁移学习的目的在于利用$D_s$和$T_s$中的知识来帮助学习在目标域$D_t$的目标函数$f_T(·)$的过程，注意$D_s$与$D_t$不相等、$T...">
+  老师：盖玉洁
+  教材：《统计学：从数据到结论》吴喜之
+  结课方式：
     
-    <meta property="article:published_time" content="2020-08-13T00:00:00Z">
+      需要对例题进行R代码实现
+      总结论文（分组）或者数据实践
+    
+  
+
+
+第一章 基本概念
+
+
+  DATE:2020-09-18
+
+
+">
+    
+    <meta property="article:published_time" content="2020-09-18T00:00:00Z">
     
     
     
-    <meta property="article:tag" content="机器学习">
+    <meta property="article:tag" content="研究生">
     
-    <meta property="article:tag" content="深度学习">
+    <meta property="article:tag" content="计算机">
+    
+    <meta property="article:tag" content="理论">
     
     
     <meta property="og:image" content="http://localhost:4000/img/touxiang.png">
-    <meta property="og:url" content="http://localhost:4000/note/transfer-learning">
+    <meta property="og:url" content="http://localhost:4000/notes/pm/basic">
     <meta property="og:site_name" content="">
     
-    <title>Transfer Learning 迁移学习 - </title>
+    <title>【笔记】大数据分析-统计基础 - </title>
 
     <!-- Web App Manifest -->
     <link rel="manifest" href="/pwa/manifest.json">
@@ -41,7 +59,7 @@
     <link rel="shortcut icon" href="/img/favicon.ico">
     
     <!-- Canonical URL -->
-    <link rel="canonical" href="http://localhost:4000/note/transfer-learning">
+    <link rel="canonical" href="http://localhost:4000/notes/pm/basic">
 
     <!-- Bootstrap Core CSS -->
     <link rel="stylesheet" href="/css/bootstrap.min.css">
@@ -111,6 +129,24 @@
                         <li>
                             <a href="/dailys/">Daily&Hobby</a>
                         </li>
+                        
+                        
+                        <li>
+                            <a href="/notes/pm/computer">【笔记】大数据分析-计算机基础</a>
+                        </li>
+                        
+                        
+                        
+                        <li>
+                            <a href="/notes/pm/computer">【笔记】大数据分析-计算机基础</a>
+                        </li>
+                        
+                        
+                        
+                        <li>
+                            <a href="/notes/pm/computer">【笔记】大数据分析-计算机基础</a>
+                        </li>
+                        
                         
                         
                         
@@ -256,15 +292,17 @@
                 <div class="post-heading">
                     <div class="tags">
                         
-                        <a class="tag" href="/archive/?tag=%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0" title="机器学习">机器学习</a>
+                        <a class="tag" href="/archive/?tag=%E7%A0%94%E7%A9%B6%E7%94%9F" title="研究生">研究生</a>
                         
-                        <a class="tag" href="/archive/?tag=%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0" title="深度学习">深度学习</a>
+                        <a class="tag" href="/archive/?tag=%E8%AE%A1%E7%AE%97%E6%9C%BA" title="计算机">计算机</a>
+                        
+                        <a class="tag" href="/archive/?tag=%E7%90%86%E8%AE%BA" title="理论">理论</a>
                         
                     </div>
-                    <h1>Transfer Learning 迁移学习</h1>
+                    <h1>【笔记】大数据分析-统计基础</h1>
                     
-                    <h2 class="subheading">一种机器学习方法，通过从已学习的相关任务中转移知识来改进学习的新任务。</h2>
-                    <span class="meta">Posted by 王子段 | WangZiduan on August 13, 2020</span>
+                    <h2 class="subheading"></h2>
+                    <span class="meta">Posted by 王子段 | WangZiduan on September 18, 2020</span>
                 </div>
             </div>
         </div>
@@ -290,74 +328,24 @@
                 <!-- Multi-Lingual -->
                 
 
-				<h1 id="概述">概述</h1>
+				<h1 id="课程要求">课程要求</h1>
+
+<ul>
+  <li>老师：盖玉洁</li>
+  <li>教材：《统计学：从数据到结论》吴喜之</li>
+  <li>结课方式：
+    <ul>
+      <li>需要对例题进行R代码实现</li>
+      <li>总结论文（分组）或者数据实践</li>
+    </ul>
+  </li>
+</ul>
+
+<h1 id="第一章-基本概念">第一章 基本概念</h1>
 
 <blockquote>
-  <p>定义：给定由特征空间$X$和边缘概率分布$P(X)$组成的源域（source domain）$D_s$和学习任务$T_s$，和同样由特征空间和边缘概率分布组成的目标域（target domain）$D_t$和学习任务$T_t$，迁移学习的目的在于利用$D_s$和$T_s$中的知识来帮助学习在目标域$D_t$的目标函数$f_T(·)$的过程，注意$D_s$与$D_t$不相等、$T_s$与$T_t$不相等。</p>
+  <p>DATE:2020-09-18</p>
 </blockquote>
-
-<p>对于一个深度网络，随着网络层数的加深，网络越来越依赖于特定任务；而浅层相对来说只是学习一个大概的特征。不同任务的网络中，浅层的特征基本是通用的。这就启发我们，如果要适配一个网络，重点是要适配高层——那些task-specific的层。</p>
-
-<h2 id="发展瓶颈">发展瓶颈</h2>
-
-<ul>
-  <li>其一，如何在现有的训练好的模型中选择合适当前任务的模型；</li>
-  <li>其二，如何确定还需要多少数据来训练模型；</li>
-  <li>其三，预训练应该在什么时候停止；</li>
-  <li>其四，当出现新的数据或更好的算法，如何更新预训练模型。</li>
-</ul>
-
-<h2 id="专有名词及代表">专有名词及代表</h2>
-
-<ul>
-  <li>$\mathcal{D}$：领域$Domain$，$\mathcal{D_s}$=源域，$\mathcal{D_t}$=目标域</li>
-  <li>$\mathcal{X}$：数据的特征空间</li>
-  <li>$\mathcal{Y}$：标签空间</li>
-  <li>$f(·)$：学习函数</li>
-</ul>
-
-<p><img src="/Users/didi/Library/Application Support/typora-user-images/image-20200818192418183.png" alt="image-20200818192418183" /></p>
-
-<h1 id="具体模型">具体模型</h1>
-
-<h2 id="dandeep-adaptation-network-深度适配网络">DAN(Deep Adaptation Network, 深度适配网络)</h2>
-
-<p>基于DDC发展的。<a href="File:///Users/didi/Desktop/wj19816.github.io/files/Deep Adaptation Network.pdf">参考论文</a>。</p>
-
-<table>
-  <tbody>
-    <tr>
-      <td><strong>领域自适应 (Domain Adaptation)</strong>: 给定一个有标记的源域 $\mathcal{D_s} = {x_i, y_i}^n_{i=1}$ 和一个 无标记的目标域 $\mathcal{D_t} = {x_j}^{n+m}_{j=n+1}$ ，假定它们的特征空间相同，即$\mathcal{X_s=X_t}$，并且它们的类别空间也相同，$\mathcal{Y_s=Y_t}$以及条件概率分布也相同，即$\mathcal{Q_s(y_s</td>
-      <td>x_s)=Q_t(y_t</td>
-      <td>x_t)}$。但是这两个</td>
-    </tr>
-  </tbody>
-</table>
-
-<p>域的边缘分布不同，即 $P_s(x_s)\neq P_t(x_t)$。迁移学习的目标就是，利用有标记的数据$\mathcal{D_s}$去学习一个分类器$f:x_t\rightarrow y_t$来预测目标域Dt 的标签$y_t\in\mathcal{Y_t}$.</p>
-
-<p><strong>优点：</strong></p>
-
-<ul>
-  <li>
-    <p>适配了多层网络</p>
-  </li>
-  <li>
-    <p>使用了多核MMD</p>
-
-    <blockquote>
-      <p><strong>MMD(Maximum mean discrepancy)：</strong>最大均值距离。度量在再生希尔伯特空间中两个分布的距离，是一种核学习方法。<img src="https://images2015.cnblogs.com/blog/140867/201706/140867-20170620151726741-1629954217.png" alt="img" /></p>
-
-      <blockquote>
-        <p>近年来，MMD越来越多地应用在迁移学习中。在迁移学习环境下训练集和测试集分别取样自分布p和q，两类样本集不同但相关。我们可以利用深度神经网络的特征变换能力，来做特征空间的变换，直到变换后的特征分布相匹配，这个过程可以是source domain一直变换直到匹配target domain。匹配的度量方式就是MMD。</p>
-      </blockquote>
-
-      <p>参考链接：https://zhuanlan.zhihu.com/p/25418364</p>
-    </blockquote>
-  </li>
-</ul>
-
-<p><img src="https://pic4.zhimg.com/80/v2-5166a679f33ebe8b240fdead168bd61c_1440w.jpg" alt="img" /></p>
 
 
 
@@ -365,17 +353,17 @@
                 <ul class="pager">
                     
                     <li class="previous">
-                        <a href="/posts/xiguashu" data-toggle="tooltip" data-placement="top" title="【笔记】机器学习(西瓜书) 周志华">
+                        <a href="/notes/pm/mining" data-toggle="tooltip" data-placement="top" title="【笔记】大数据挖掘与机器学习">
                         Previous<br>
-                        <span>【笔记】机器学习(西瓜书) 周志华</span>
+                        <span>【笔记】大数据挖掘与机器学习</span>
                         </a>
                     </li>
                     
                     
                     <li class="next">
-                        <a href="/note/hadoop" data-toggle="tooltip" data-placement="top" title="Hadoop、Spark及其他分布式系统相关">
+                        <a href="/notes/pm/juds" data-toggle="tooltip" data-placement="top" title="【笔记】综合评价方法">
                         Next<br>
-                        <span>Hadoop、Spark及其他分布式系统相关</span>
+                        <span>【笔记】综合评价方法</span>
                         </a>
                     </li>
                     

@@ -1,0 +1,93 @@
+I"A<h1 id="课程要求">课程要求</h1>
+
+<ul>
+  <li>
+    <p>老师：李丰</p>
+
+    <ul>
+      <li>Email: feng.li@cufe.edu.cn</li>
+      <li>Phone: +86-(0)10-6177-6189</li>
+    </ul>
+  </li>
+  <li>
+    <p>教材：<a href="https://github.com/feng-li/Distributed-Statistical-Computing">Distributed-Statistical-Computing</a>/大数据分布式计算与案例/<a href="https://feng.li/files/distcompbook/index.html">新版教材</a></p>
+  </li>
+  <li>
+    <p>结课方式：平时成绩(50%)+期末项目(50%)</p>
+  </li>
+  <li>
+    <p>课程要求：</p>
+
+    <ul>
+      <li>期末项目要求体现工作量</li>
+      <li>不允许迟到</li>
+    </ul>
+  </li>
+</ul>
+
+<h1 id="l01-introduction">L01-Introduction</h1>
+
+<blockquote>
+  <p>DATE: 2020-09-14</p>
+</blockquote>
+
+<h2 id="l011-introduction-to-distributed-computing">L01.1-Introduction-to-Distributed-Computing</h2>
+
+<h3 id="什么是分布式">什么是分布式？</h3>
+
+<p>分布式与传统的顺序范式编程不同，传统顺序范式按照代码顺序逐行执行，分布式利用多台计算机同时进行执行。</p>
+
+<p>With a distributed system, this same data set will be divided into smaller (typically 64 MB) blocks that are spread among many machines in the cluster via the <strong>Distributed File System</strong>.</p>
+
+<ul>
+  <li>在超级计算机上，计算机被重新部署：所有内存、CPU、硬盘分别焊接在一起。但成本过高，一般采用data-to-code方式。</li>
+  <li>分布式特指的是将计算分布在许多不同的计算机之间。</li>
+</ul>
+
+<p>分布式计算是一种<strong>move-code-to-data</strong>方式，从而实现并行计算，提高效率。</p>
+
+<h3 id="mapreduce">MapReduce</h3>
+
+<blockquote>
+  <p>Map：映射，将命令传达到各个计算机进行计算</p>
+
+  <p>Reduce：整合，将计算结果进行合并输出</p>
+</blockquote>
+
+<h3 id="分布式计算框架">分布式计算框架</h3>
+
+<blockquote>
+  <p>这是一种平台，但不是编程语言</p>
+</blockquote>
+
+<p>包括：</p>
+
+<ul>
+  <li>分布式文件储存系统：HDFS</li>
+  <li>分布式计算平台：Spark</li>
+  <li>分布式任务资源管理：ZOOKEEPER</li>
+</ul>
+
+<p><img src="/Users/didi/Desktop/wj19816.github.io/img/hadoop_ecosystem.png" alt="image" /></p>
+
+<h3 id="作业">作业：</h3>
+<p><code class="language-plaintext highlighter-rouge">chaoxin 下周二23：55</code></p>
+
+<ol>
+  <li>寻找计算机某一个硬盘下所有文本文件的文件名包含“win”的文件名，并修改成一个并行程序，记录两者的时间。</li>
+  <li>思考：分布式与并行计算的区别是什么？</li>
+</ol>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+</pre></td><td class="rouge-code"><pre># R：parallel
+# Python：multiprocessing
+</pre></td></tr></tbody></table></code></pre></div></div>
+
+<h2 id="l012-linux-basics">L01.2-Linux-Basics</h2>
+
+<h2 id="l013-introduction-to-hadoop">L01.3-Introduction-to-Hadoop</h2>
+
+<h1 id="l02-mapreduce">L02-MapReduce</h1>
+
+:ET
