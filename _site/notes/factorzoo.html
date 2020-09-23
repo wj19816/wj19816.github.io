@@ -121,24 +121,6 @@
                         </li>
                         
                         
-                        <li>
-                            <a href="/notes/pm/computer">【笔记】大数据分析-计算机基础</a>
-                        </li>
-                        
-                        
-                        
-                        <li>
-                            <a href="/notes/pm/computer">【笔记】大数据分析-计算机基础</a>
-                        </li>
-                        
-                        
-                        
-                        <li>
-                            <a href="/notes/pm/computer">【笔记】大数据分析-计算机基础</a>
-                        </li>
-                        
-                        
-                        
                         
                         
                         <li>
@@ -553,7 +535,11 @@
 \[(\hat{\lambda}=\frac{1}{T}\sum_{t=1}^T\lambda_t) ,\\ (s.e.(\hat{\lambda})=\frac{std(\lambda_t)}{\sqrt{T}}) , \\(t-value=\frac{\hat{\lambda}}{s.e.(\hat{\lambda})}\sim t(T-1))\]
 
         <ol>
-          <li>检验$L$个投资组合的收益率单调性：\(\rho_s=\frac{cov(X_r,X_g)}{\sigma_{X_r}\sigma_{X_g}}\)</li>
+          <li>
+            <p>检验$L$个投资组合的收益率单调性：</p>
+
+\[\rho_s=\frac{cov(X_r,X_g)}{\sigma_{X_r}\sigma_{X_g}}\]
+          </li>
         </ol>
       </li>
       <li>缺点：难以控制其他因子的影响。</li>
@@ -603,12 +589,12 @@
     <ol>
       <li>因子收益时序需已知。</li>
       <li>时序回归对每个资产单独进行，不以最小化所有$\hat{\alpha_i}$的平方和为目标。</li>
-      <li>若$\varepsilon_{it}$满足iid正态分布，可以使用GRS检验，否则可以使用广义矩估计。
-        <h3 id="222-截面回归不常见但适用性更广">2.2.2 截面回归（<em>不常见，但适用性更广</em>）</h3>
-      </li>
+      <li>若$\varepsilon_{it}$满足iid正态分布，可以使用GRS检验，否则可以使用广义矩估计。</li>
     </ol>
   </li>
 </ul>
+
+<h3 id="222-截面回归不常见但适用性更广">2.2.2 截面回归（<em>不常见，但适用性更广</em>）</h3>
 
 <blockquote>
   <p>首先利用时序回归确定资产的因子暴露，然后考察因子暴露与资产预期收益率在截面上的关系。</p>
@@ -704,7 +690,8 @@
 
 <ol>
   <li>当$\varepsilon$满足独立同方差时，$\gamma$是单位阵$I$。</li>
-  <li>当出现异方差，但没有自相关时，$\sigma^2\gamma=\sigma^2=\begin{bmatrix} v_{11}&amp;0&amp;…&amp;0 \0&amp;v_{22}&amp;…&amp;0\\vdots&amp;\vdots&amp;\ddots&amp;\vdots\0&amp;0&amp;…&amp;v_{TT} \end{bmatrix}=\begin{bmatrix} \sigma_1^2&amp;0&amp;…&amp;0 \0&amp;\sigma_2^2&amp;…&amp;0\\vdots&amp;\vdots&amp;\ddots&amp;\vdots\0&amp;0&amp;…&amp;\sigma_T^2 \end{bmatrix}$</li>
+  <li>当出现异方差，但没有自相关时，
+$\sigma^2\gamma=\sigma^2=\begin{bmatrix} v_{11}&amp;0&amp;…&amp;0\ 0&amp;v_{22}&amp;…&amp;0 \ \vdots&amp;\vdots&amp;\ddots&amp;\vdots\ 0 &amp;0&amp;…&amp;v_{TT} \end{bmatrix}=\begin{bmatrix} \sigma_1^2&amp;0&amp;…&amp;0\ 0 &amp;\sigma_2^2&amp;…&amp;0\ \vdots&amp;\vdots&amp;\ddots&amp;\vdots\ 0 &amp;0&amp;…&amp;\sigma_T^2 \end{bmatrix}$</li>
   <li>当出现自相关，但没有异方差时，$\sigma^2\gamma=\sigma^2\begin{bmatrix} 1&amp;\rho_1&amp;…&amp;\rho_{T-1} \\rho_1&amp;1&amp;…&amp;\rho_{T-2}\\vdots&amp;\vdots&amp;\ddots&amp;\vdots\\rho_{T-1}&amp;\rho_{T-2}&amp;…&amp;1 \end{bmatrix}$</li>
 </ol>
 
@@ -728,17 +715,31 @@
 
 \[S=\frac{1}{T}\sum_{t=1}^T\hat{\varepsilon}_{t}^2x_tx_t'+\frac{1}{T}\sum_{j=1}^{J}\sum_{t=j+1}^{T}w_j\hat{\varepsilon_t}\hat{\varepsilon}_{t-j}(x_tx_{t-j}'+x_{t-j}x_t')\\其中，w_i=1-\frac{j}{1+J}，J为 计算自相关性影响的最大之后结束，w_j是滞后期j的权重系数。\]
 
-<p>因此，<strong>Newey-West异方差自相关相合估计量</strong>：\(\hat{V}_{OLS}=T(X'X)^{-1}S(X'X)^{-1}\)</p>
+<p>因此，<strong>Newey-West异方差自相关相合估计量</strong>：</p>
+
+\[\hat{V}_{OLS}=T(X'X)^{-1}S(X'X)^{-1}\]
 
 <p>对协方差阵对角线上的元素求平方和，就能得到回归系数的标准误。</p>
 
 <p><strong>总结步骤：</strong></p>
 
 <ol>
-  <li>使用异象收益率作为被解释变量、多因子中$K$个因子的收益率以及一个截距项（共$K+1$项）作为解释变量，进行时序回归$OLS$估计，得到残差$\hat{\varepsilon}$。</li>
-  <li>使用$K+1$个解释变量$X$和残差$\hat{\varepsilon}$，根据$S=\frac{1}{T}\sum_{t=1}^T\hat{\varepsilon}<em>{t}^2x_tx_t’+\frac{1}{T}\sum</em>{j=1}^{J}\sum_{t=j+1}^{T}w_j\hat{\varepsilon_t}\hat{\varepsilon}<em>{t-j}(x_tx</em>{t-j}’+x_{t-j}x_t’)\$和$\hat{V}<em>{OLS}=T(X’X)^{-1}S(X’X)^{-1}$计算经过Newey-West调整后的$\hat{V}</em>{OLS}$计算时确定最大滞后期数：$J=\lfloor 4\times (\frac{T}{100}^{2/9}) \rfloor$</li>
-  <li>将$\hat{V}_{OLS}$的对角线元素开平方，其平方根就是回归系数$\hat{b}$的标准误。</li>
-  <li>找到截距项的标准误，用$\hat{\alpha}$和$s.e.(\hat{\alpha})$按照\(t-value=\frac{\hat{\alpha}}{s.e.(\hat{\alpha})}\sim t(T-K-1)\)计算t值，进行t检验。</li>
+  <li>
+    <p>使用异象收益率作为被解释变量、多因子中$K$个因子的收益率以及一个截距项（共$K+1$项）作为解释变量，进行时序回归$OLS$估计，得到残差$\hat{\varepsilon}$。</p>
+  </li>
+  <li>
+    <p>使用$K+1$个解释变量$X$和残差$\hat{\varepsilon}$，根据</p>
+
+\[S=\frac{1}{T}\sum_{t=1}^T\hat{\varepsilon}_{t}^2x_tx_t'+\frac{1}{T}\sum_{j=1}^{J}\sum_{t=j+1}^{T}w_j\hat{\varepsilon_t}\hat{\varepsilon}_{t-j}(x_tx_{t-j}'+x_{t-j}x_t')\\\]
+
+    <p>和 $\hat{V}<em>{OLS}=T(X’X)^{-1}S(X’X)^{-1}$ 计算经过Newey-West调整后的 $\hat{V}</em>{OLS}$ 计算时确定最大滞后期数：$J=\lfloor 4\times (\frac{T}{100}^{2/9}) \rfloor$</p>
+  </li>
+  <li>
+    <p>将$\hat{V}_{OLS}$的对角线元素开平方，其平方根就是回归系数$\hat{b}$的标准误。</p>
+  </li>
+  <li>
+    <p>找到截距项的标准误，用$\hat{\alpha}$和$s.e.(\hat{\alpha})$按照\(t-value=\frac{\hat{\alpha}}{s.e.(\hat{\alpha})}\sim t(T-K-1)\)计算t值，进行t检验。</p>
+  </li>
 </ol>
 
 <h3 id="244-截面回归检验">2.4.4 截面回归检验</h3>
@@ -777,7 +778,8 @@
 
 \[GRS_{value}=\frac{T-N-K}{N}([\frac{\sqrt{1+\hat{\theta}_{N+K}^2}}{\sqrt{1+\hat{\theta}_{K}^2}}]^2-1)\sim F_{N,T-N-K}\]
 
-<p>其中，$\hat{\theta}<em>{N+K}^2$表示由全部N个资产和K个因子构成的某个事后最大夏普比率投资组合的夏普比率；$\hat{\theta}</em>{K}^2$表示由全部K个因子构成的某个事后最大夏普比率投资组合的夏普比率。</p>
+<p>其中，$\hat{\theta}<em>{N+K}^2$表示由全部N个资产和K个因子构成的某个事后最大夏普比率投资组合的夏普比率；
+$\hat{\theta}</em>{K}^2$表示由全部K个因子构成的某个事后最大夏普比率投资组合的夏普比率。</p>
 
 <p><strong>GRS统计量可以直观理解为：在K个因子之外加入N个资产之后，能够获得的最大夏普比率是否显著高于仅由K个因子实现的最大夏普比率，如果夏普比率显著提高，那么该因子模型就不能解释这N个资产。</strong></p>
 
@@ -833,14 +835,11 @@
 
 <h3 id="255-贝叶斯方法">2.5.5 贝叶斯方法</h3>
 
-<table>
-  <tbody>
-    <tr>
-      <td>假设：多因子模型的参数$\beta$和$\Sigma$满足特定的非正常先验分布，参数$\alpha$在原假设下为零，在备择假设下满足多元正态条件分布$f(\alpha</td>
-      <td>\beta,\Sigma)=\mathcal{N}(0,\tau\Sigma)(\tau&gt;0)$。令$D$代表数据、$\mathcal{M}_i$代表第$i$个模型，则边际似然函数为：</td>
-    </tr>
-  </tbody>
-</table>
+<p>假设：多因子模型的参数$\beta$和$\Sigma$满足特定的非正常先验分布，参数$\alpha$在原假设下为零，在备择假设下满足多元正态条件分布：</p>
+
+\[f(\alpha|\beta,\Sigma)=\mathcal{N}(0,\tau\Sigma)(\tau&gt;0)\]
+
+<p>令$D$代表数据、$\mathcal{M}_i$代表第$i$个模型，则边际似然函数为：</p>
 
 \[prob(D|\mathcal{M}_i)=\int\int f(D|\mathcal{M}_i,\alpha,\beta,\Sigma)f(\alpha|\beta,\Sigma)f(\beta,\Sigma)d\alpha d\beta\Sigma\]
 
@@ -881,7 +880,9 @@
 
 <p><strong>核心：计算样本均值的方差。</strong></p>
 
-<p>当随机变量$u_t$满足独立同分布时，样本均值的标准误为：\(s.e.(\overline{u})=\frac{\sigma(u_t)}{\sqrt{T}}\)</p>
+<p>当随机变量$u_t$满足独立同分布时，样本均值的标准误为：</p>
+
+\[s.e.(\overline{u})=\frac{\sigma(u_t)}{\sqrt{T}}\]
 
 <p>当$u_t$序列存在非零的自相关性（即$cov(u_t,u_{t-j})\ne0$时，更一般情况下的样本均值的方差：</p>
 
@@ -921,12 +922,16 @@
 
   <p>成本$p_t=0$，$R^e$为超额收益，则矩条件：$E[m(b_0)R^e]=0$</p>
 
-  <p>放在一起可以得到：\(\begin{bmatrix} E[m(b_0)R_f^g]-1\\E[m(b_0)R^e] \end{bmatrix}=\begin{bmatrix}0\\0\end{bmatrix}\)</p>
+  <p>放在一起可以得到：</p>
+
+\[\begin{bmatrix} E[m(b_0)R_f^g]-1\\E[m(b_0)R^e] \end{bmatrix}=\begin{bmatrix}0\\0\end{bmatrix}\]
 </blockquote>
 
 <h4 id="2-利用样本数据进行参数估计">2. 利用样本数据进行参数估计</h4>
 
-<p>根据定义，样本矩可以写成\(E_T[f(x_t,b_0]=\frac{1}{T}\sum_{t=1}^Tf(x_t,b_0)\equiv g_T(b_0)\)</p>
+<p>根据定义，样本矩可以写成</p>
+
+\[E_T[f(x_t,b_0]=\frac{1}{T}\sum_{t=1}^Tf(x_t,b_0)\equiv g_T(b_0)\]
 
 <p><em>无论具体问题是什么，样本矩在数学上的定义都是f在样本内取均值而已。</em></p>
 
