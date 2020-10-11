@@ -24,8 +24,8 @@ https://github.com/kitian616/jekyll-TeXt-theme
 					ShowAll
 					<sup>{{posts.size}}</sup>
 				</a>
-				{% assign posts_hide= site.posts | where:"categories","hide" %}
-				{% assign posts = site.posts | remove: posts_hide | concat: site.project | concat: site.note | concat: site.dailys | where:"layout","post"%}
+				<!-- {% assign posts_hide= site.posts | where:"categories","hide" %} -->
+				{% assign posts = site.posts | concat: site.project | concat: site.note | concat: site.dailys | where:"layout","post"%}
 				{% capture tags %}
 				{% for tag in site.tags %}
 				<a data-sort="{{ posts.size | minus: tag[1].size | prepend: '0000' | slice: -4, 4 }}"
@@ -33,6 +33,7 @@ https://github.com/kitian616/jekyll-TeXt-theme
 					class="tag-button"
 					title="{{ tag[0] }}" rel="{{ tag[1].size }}">
 					{{ tag[0] }}
+					<sup>{{tag[1].size}}</sup>
 				</a>__SEPERATOR__
 				{% endfor %}
 				{% endcapture %}

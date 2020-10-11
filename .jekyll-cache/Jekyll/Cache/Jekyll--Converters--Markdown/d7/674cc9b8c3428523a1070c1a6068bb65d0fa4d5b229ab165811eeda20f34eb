@@ -1,0 +1,144 @@
+I"C<h1 id="起因">起因：</h1>
+
+<p>由于之前为了方便管理，把文章根据内容分在了不同文件夹中，这样就导致其他文件夹下的文章标签无法被识别，只能单独新建一个隐藏md文件存所有的标签，但是这样就没法很好使用<em>tag cloud</em>的功能（且麻烦☹️）。</p>
+
+<p>因此，还是需要从根本上去修改。</p>
+
+<p>查了很多资料，发现源头是因为：<strong>jekyll中默认的<code class="language-plaintext highlighter-rouge">site.tags</code>变量只能识别<code class="language-plaintext highlighter-rouge">_post</code>文件夹下的文章</strong>，但是没找到地方修改。</p>
+
+<p>最后找到一篇文章，通过<code class="language-plaintext highlighter-rouge">plugins</code>的方法来解决。感谢：</p>
+
+<blockquote>
+  <p>参考：<a href="https://blog.csdn.net/NetMicrobe/article/details/80761727">jekyll plugin， 重写 site.categories / site.tags ，将 page 的 categories &amp; tags 收纳进来。</a></p>
+</blockquote>
+
+<h1 id="安装步骤">安装步骤：</h1>
+
+<blockquote>
+  <p>参考：<a href="https://jekyllcn.com/docs/plugins/">jekyll 官方插件文档</a></p>
+</blockquote>
+
+<ol>
+  <li>
+    <p>在网站根下目录建立 <code class="language-plaintext highlighter-rouge">_plugins</code> 文件夹。 Jekyll 运行之前，会加载此目录下所有以 <code class="language-plaintext highlighter-rouge">*.rb</code> 结尾的文件</p>
+  </li>
+  <li>
+    <p>在 <code class="language-plaintext highlighter-rouge">_plugins</code> 文件夹下新建<code class="language-plaintext highlighter-rouge">gather_cates_tags.rb</code>文件。插入代码：</p>
+
+    <div class="language-erb highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+31
+32
+33
+34
+35
+36
+37
+38
+39
+40
+41
+42
+43
+44
+45
+46
+47
+48
+49
+50
+51
+52
+53
+54
+55
+56
+</pre></td><td class="rouge-code"><pre>module Jekyll
+  class Site
+       
+    # 
+    # 将其他 colleciton 中 document 排入 site.categories
+    # 
+    def categories_with_pages
+      # 获取 _posts 的 categories， jekyll 自带
+      cates = categories_without_pages
+         
+      # 将其他 colleciton 中 document 排入 site.categories
+      collections.each do |k, v|
+        next if k == 'posts'
+        v.docs.each do |doc|
+          # Add doc into categories
+          if doc.data['categories']
+            doc.data['categories'].each do |cate|
+              # category 可以支持 utf-8 中文，在模板中使用 ['chinese-cate']的方式引用
+              # 例如： 
+              cates[cate.force_encoding('utf-8')] <span class="nt">&lt;</span><span class="err">&lt;</span> <span class="na">doc</span>
+            <span class="na">end</span>
+          <span class="na">end</span>
+        <span class="na">end</span>
+      <span class="na">end</span>
+         
+      <span class="na">cates</span>
+    <span class="na">end</span>
+       
+    <span class="na">alias_method</span> <span class="na">:categories_without_pages</span><span class="err">,</span> <span class="na">:categories</span>
+    <span class="na">alias_method</span> <span class="na">:categories</span><span class="err">,</span> <span class="na">:categories_with_pages</span>
+       
+    <span class="na">#</span>
+    <span class="na">#</span> <span class="na">将其他</span> <span class="na">colleciton</span> <span class="na">中</span> <span class="na">document</span> <span class="na">排入</span> <span class="na">site.tags</span>
+    <span class="na">#</span>
+    <span class="na">def</span> <span class="na">tags_with_pages</span>
+      <span class="na">#</span> <span class="na">获取</span> <span class="na">_posts</span> <span class="na">的</span> <span class="na">tags</span><span class="err">，</span> <span class="na">jekyll</span> <span class="na">自带</span>
+      <span class="na">tags = </span><span class="s">tags_without_pages</span>
+      <span class="na">collections.each</span> <span class="na">do</span> <span class="err">|</span><span class="na">k</span><span class="err">,</span> <span class="na">v</span><span class="err">|</span>
+        <span class="na">next</span> <span class="na">if</span> <span class="na">k =</span><span class="s">=</span> <span class="err">"</span><span class="na">posts</span><span class="err">"</span>
+        <span class="na">v.docs.each</span> <span class="na">do</span> <span class="err">|</span><span class="na">doc</span><span class="err">|</span>
+          <span class="na">if</span> <span class="na">doc.data</span><span class="err">['</span><span class="na">tags</span><span class="err">']</span>
+            <span class="na">doc.data</span><span class="err">['</span><span class="na">tags</span><span class="err">'].</span><span class="na">each</span> <span class="na">do</span> <span class="err">|</span><span class="na">t</span><span class="err">|</span>
+              <span class="na">tags</span><span class="err">[</span><span class="na">t.force_encoding</span><span class="err">('</span><span class="na">utf-8</span><span class="err">')]</span> <span class="err">&lt;&lt;</span> <span class="na">doc</span>
+            <span class="na">end</span>
+          <span class="na">end</span>
+        <span class="na">end</span>
+      <span class="na">end</span>
+         
+      <span class="na">tags</span>
+    <span class="na">end</span>
+       
+    <span class="na">alias_method</span> <span class="na">:tags_without_pages</span><span class="err">,</span> <span class="na">:tags</span>
+    <span class="na">alias_method</span> <span class="na">:tags</span><span class="err">,</span> <span class="na">:tags_with_pages</span>
+  <span class="na">end</span>
+   
+<span class="na">end</span>
+</pre></td></tr></tbody></table></code></pre></div>    </div>
+  </li>
+</ol>
+
+:ET

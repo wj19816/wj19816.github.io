@@ -1,0 +1,14 @@
+I"
+<p><strong>起因</strong>：由于之前为了方便管理，把文章根据内容分在了不同文件夹中，这样就导致其他文件夹下的文章标签无法被识别，只能单独新建一个隐藏md文件存所有的标签，但是这样就没法很好使用<em>tag cloud</em>的功能（且麻烦☹️）。</p>
+
+<p>因此，还是需要从根本上去修改。</p>
+
+<p>查了很多资料，发现源头是因为：<strong>jekyll中默认的<code class="language-plaintext highlighter-rouge">site.tags</code>变量只能识别<code class="language-plaintext highlighter-rouge">_post</code>文件夹下的文章</strong>，但是没找到地方修改。</p>
+
+<p>最后找到一篇文章，通过<code class="language-plaintext highlighter-rouge">plugins</code>的方法来解决。感谢：</p>
+
+<blockquote>
+  <p>参考：<a href="https://blog.csdn.net/NetMicrobe/article/details/80761727">jekyll plugin， 重写 site.categories / site.tags ，将 page 的 categories &amp; tags 收纳进来。</a></p>
+</blockquote>
+
+:ET
