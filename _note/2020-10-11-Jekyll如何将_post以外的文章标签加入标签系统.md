@@ -4,8 +4,13 @@ title: 'Jekyll:如何将_post以外的文章标签加入标签系统'
 date: 2020-10-11
 permalink: /posts/jekyll-plugins
 tags:
-  - 博客
+- 工具
+- 安装
+- 博客
+
 ---
+
+<!-- more -->
 
 
 

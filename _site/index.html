@@ -254,7 +254,7 @@
                 col-xs-12
                 postlist-container
             ">
-    			
+    			<!--  -->
 
 
 
@@ -266,7 +266,12 @@
         
         <div class="post-content-preview">
             
-                Github 1 2 3 4 5 6 7 8 9...
+                <!-- git命令使用手册 Github 1 2 3 4 5 6 7 8... -->
+                <blockquote>
+  <p>git命令使用手册</p>
+</blockquote>
+
+
             
         </div>
     </a>
@@ -284,12 +289,45 @@
 <div class="post-preview">
     <a href="/posts/linux">
         <h2 class="post-title">
-            Linux及shell相关使用
+            Linux系统常用命令行
         </h2>
         
         <div class="post-content-preview">
             
-                Linux 1 2 3 4 5 6 7 8 9...
+                <!-- Linux系统使用的常用操作 Linux 1 2 3 4 5 6 7 8... -->
+                <blockquote>
+  <p>Linux系统使用的常用操作</p>
+</blockquote>
+
+
+            
+        </div>
+    </a>
+    <p class="post-meta">
+        Posted on July 28, 2020
+    </p>
+<!--
+    <p class="post-meta">
+        Posted by 王子段 | WangZiduan on July 28, 2020
+    </p>
+-->
+</div>
+<hr>
+
+<div class="post-preview">
+    <a href="/posts/shell">
+        <h2 class="post-title">
+            Shell语言基础
+        </h2>
+        
+        <div class="post-content-preview">
+            
+                <!-- Shell语言入门笔记 shell编程环境也有许多，如Bourne Shell、Bourne Again Shell、C Shell、K Shell等，一般常用的是Bourne Again Shell(即bash)，这也是linux系统默认的shell。 常用... -->
+                <blockquote>
+  <p>Shell语言入门笔记</p>
+</blockquote>
+
+
             
         </div>
     </a>
@@ -312,7 +350,12 @@
         
         <div class="post-content-preview">
             
-                第一章 因子投资基础 核心公式: \[E(R_i^e)=\alpha_i+\beta'_i\lambda\] 其中，$E(R_i^e)$为资产的预期超额收益，$\beta_i$是因子暴露/因子载荷，$\lambda$是因子预期收益/因子溢价。 股票在某因子$i$上的暴露$\beta _i$反映的是在控制了其他因子后，该目标因子的收益率变化对股票超额收益变化的影响程度。 因子代表了收益率的一种结构。一旦结构给定后，个股或者任何一个投资组合的预期收益率就完全由它在这些因子上的暴露决定了——暴露高，预期收益率就高。 目的：如何找到这个最好的结构。 $\alpha_i$：异象因子...
+                <!-- 石川：《因子投资：方法与实践》读书笔记 第一章 因子投资基础 核心公式: \[E(R_i^e)=\alpha_i+\beta'_i\lambda\] 其中，$E(R_i^e)$为资产的预期超额收益，$\beta_i$是因子暴露/因子载荷，$\lambda$是因子预期收益/因子溢价。 股票在某因子$i$上的暴露$\beta _i$反映的是在控制了其他因子后，该目标因子的收益率变化对股票超额收益变化的影响程度。 因子代表了收益率的一种结构。一旦结构给定后，个股或者任何一个投资组合的预期收益率就完全由它在这些因子上的暴露决定了——暴露高，预期收益率就高。 目的：如何找到这个最好的结构。... -->
+                <blockquote>
+  <p>石川：《因子投资：方法与实践》读书笔记</p>
+</blockquote>
+
+
             
         </div>
     </a>
@@ -328,6 +371,34 @@
 <hr>
 
 <div class="post-preview">
+    <a href="/notes/rbookdown">
+        <h2 class="post-title">
+            如何使用Rbookdown写一本书
+        </h2>
+        
+        <div class="post-content-preview">
+            
+                <!-- Rbookdown下载及简单使用说明 安装设置 1 2 3 4 #安装依赖包 install.packages("bookdown") install.packages('servr') install.packages("bookdownplus")... -->
+                <blockquote>
+  <p>Rbookdown下载及简单使用说明</p>
+</blockquote>
+
+
+            
+        </div>
+    </a>
+    <p class="post-meta">
+        Posted on October 6, 2020
+    </p>
+<!--
+    <p class="post-meta">
+        Posted by 王子段 | WangZiduan on October 6, 2020
+    </p>
+-->
+</div>
+<hr>
+
+<div class="post-preview">
     <a href="/posts/jekyll-plugins">
         <h2 class="post-title">
             Jekyll:如何将_post以外的文章标签加入标签系统
@@ -335,7 +406,8 @@
         
         <div class="post-content-preview">
             
-                起因： 由于之前为了方便管理，把文章根据内容分在了不同文件夹中，这样就导致其他文件夹下的文章标签无法被识别，只能单独新建一个隐藏md文件存所有的标签，但是这样就没法很好使用tag cloud的功能（且麻烦☹️）。 因此，还是需要从根本上去修改。 查了很多资料，发现源头是因为：jekyll中默认的site.tags变量只能识别_post文件夹下的文章，但是没找到地方修改。 最后找到一篇文章，通过plugins的方法来解决。 感谢： 参考：jekyll plugin， 重写...
+                <!-- 起因： 由于之前为了方便管理，把文章根据内容分在了不同文件夹中，这样就导致其他文件夹下的文章标签无法被识别，只能单独新建一个隐藏md文件存所有的标签，但是这样就没法很好使用tag cloud的功能（且麻烦☹️）。 因此，还是需要从根本上去修改。 查了很多资料，发现源头是因为：jekyll中默认的site.tags变量只能识别_post文件夹下的文章，但是没找到地方修改。 最后找到一篇文章，通过plugins的方法来解决。 感谢： 参考：jekyll plugin， 重写... -->
+                
             
         </div>
     </a>
@@ -358,7 +430,9 @@
         
         <div class="post-content-preview">
             
-                Hello World !
+                <!-- Hello World !
+ -->
+                <p>Hello World !</p>
 
             
         </div>
@@ -380,13 +454,14 @@
             摄影相关
         </h2>
         
-        <h3 class="post-subtitle">
-            他們用自己的去眼睛去看別人看過的東西，在別人司空見慣的東西上發現出美來。
-        </h3>
-        
         <div class="post-content-preview">
             
-                ”他們用自己的去眼睛去看別人看過的東西，在別人司空見慣的東西上發現出美來。“ 修图技巧 磨皮 通道磨皮： 复制图层→通道→绿色通道→复制通道→滤镜高反差保留（16）→图像→计算→混合选择强光（计算3次） →contrl+第三个图层 →反向→单击RGB通道 →contrl+J提出图层 →contrl+M图层曲线 →向上拉一点曲线...
+                <!-- ”他們用自己的去眼睛去看別人看過的東西，在別人司空見慣的東西上發現出美來。“ 修图技巧 磨皮 通道磨皮： 复制图层→通道→绿色通道→复制通道→滤镜高反差保留（16）→图像→计算→混合选择强光（计算3次） →contrl+第三个图层 →反向→单击RGB通道 →contrl+J提出图层 →contrl+M图层曲线 →向上拉一点曲线... -->
+                <blockquote>
+  <p>”他們用自己的去眼睛去看別人看過的東西，在別人司空見慣的東西上發現出美來。“</p>
+</blockquote>
+
+
             
         </div>
     </a>

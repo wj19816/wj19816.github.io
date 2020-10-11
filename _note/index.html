@@ -17,6 +17,15 @@ description: "You will never know unless you try."
             {{ post.subtitle }}
         </h3>
         {% endif %}
+        <div class="post-content-preview">
+            {% if post.lang == 'en' %}
+                <!-- {{ post.content | strip_html | truncatewords: 10 }} -->
+                {{ post.content | split:'<!-- more -->' | first }}
+            {% else %}
+                <!-- {{ post.content | strip_html | truncatewords: 10 }} -->
+                {{ post.content | split:'<!-- more -->' | first }}
+            {% endif %}
+        </div>
     </a>
     <p class="post-meta">
         Posted on {{ post.date | date: "%B %-d, %Y" }}

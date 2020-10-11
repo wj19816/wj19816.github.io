@@ -1,14 +1,19 @@
+---
+layout: post
+title: '如何使用Rbookdown写一本书'
+date: 2020-10-06
+permalink: /notes/rbookdown
+tags:
+  - 工具
+  - 安装
+latex: true
+---
+
+> Rbookdown下载及简单使用说明
+
+<!-- more -->
 
 
-# 如何使用Rbookdown写一本书
-
-书网址：
-
-> https://www.bookdown.org/
->
-> https://pzhao.org/zh/post/bookdownplus-released/
->
-> https://www.math.pku.edu.cn/teachers/lidf/docs/Rbook/html/_Rbook/index.html
 
 ## 安装设置
 
@@ -112,10 +117,14 @@ plot(a+b)
 
 4.表格
 
+```R
 col one      col two
+
 ----------- ----------
+
 row 1.1     row 1.2
 row 2.1     row 2.2
+```
 
 或者
 
@@ -139,4 +148,3 @@ booktabs = TRUE
 2. [R语言教程-李东风（用Rbookdown制作图书）](https://www.math.pku.edu.cn/teachers/lidf/docs/Rbook/html/_Rbook/bookdown.html)
 3. [R bookdown语法标记速查](https://pzhao.org/zh/post/bookdown-cheatsheet/)
 4. [用 R Markdown 愉快地写作是怎样一种体验](https://slides.yihui.org/2016-China-R-bookdown-Yihui-Xie.html#(1))
-5. 

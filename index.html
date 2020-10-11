@@ -4,8 +4,8 @@ title: "欢迎来到小王的秘密基地~🤩"
 header-img : "img/home-bg.jpg"
 description: "You will never know unless you try."
 ---
-{% assign posts_hide= site.posts | where:"categories","hide" %}
-{% assign posts = site.posts | remove: posts_hide | concat: site.project | concat: site.note | concat: site.dailys | where:"layout","post"%}
+<!-- {% assign posts_hide= site.posts | where:"categories","hide" %} -->
+{% assign posts = site.posts | concat: site.note | concat: site.project | concat: site.dailys | where:"layout","post"%}
 
 {% for post in posts %}
 <div class="post-preview">
@@ -20,9 +20,11 @@ description: "You will never know unless you try."
         {% endif %}
         <div class="post-content-preview">
             {% if post.lang == 'en' %}
-                {{ post.content | strip_html | truncatewords: 10 }}
+                <!-- {{ post.content | strip_html | truncatewords: 10 }} -->
+                {{ post.content | split:'<!-- more -->' | first }}
             {% else %}
-                {{ post.content | strip_html | truncatewords: 10 }}
+                <!-- {{ post.content | strip_html | truncatewords: 10 }} -->
+                {{ post.content | split:'<!-- more -->' | first }}
             {% endif %}
         </div>
     </a>

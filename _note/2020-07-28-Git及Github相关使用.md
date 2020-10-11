@@ -3,13 +3,16 @@ layout: post
 title: 'Git及Github相关使用'
 date: 2020-07-28
 permalink: /posts/github
-categories: 笔记
 tags:
+  - Git
   - 编程
-  - 计算机
 ---
 
 
+
+> git命令使用手册
+
+<!-- more -->
 
 # Github
 
