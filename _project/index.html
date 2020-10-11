@@ -6,6 +6,9 @@ description: "You will never know unless you try."
 ---
 
 {% assign posts=site.project | where:"layout","post" %}
+{% assign posts = posts | sort: 'date' %}
+{% assign posts = posts | reverse %}
+
 {% for post in posts %}
 <div class="post-preview">
     <a href="{{ post.url | prepend: site.baseurl }}">

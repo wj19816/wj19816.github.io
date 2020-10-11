@@ -6,6 +6,8 @@ description: "You will never know unless you try."
 ---
 <!-- {% assign posts_hide= site.posts | where:"categories","hide" %} -->
 {% assign posts = site.posts | concat: site.note | concat: site.project | concat: site.dailys | where:"layout","post"%}
+{% assign posts = posts | sort: 'date' %}
+{% assign posts = posts | reverse %}
 
 {% for post in posts %}
 <div class="post-preview">
