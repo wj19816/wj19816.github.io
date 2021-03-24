@@ -1,12 +1,13 @@
 ---
 layout: post
 title: '【论文解读】RALM：微信看一看中的实时Look-alike推荐模型'
-date: 2020-09-15
+date: 2021-03-24
 permalink: /notes/readpaper/ralm
 tags:
   - 算法
+  - 推荐系统
 latex: true
-header-img: img/head-inst.jpg
+header-img: img/21-0324-RALM-img/fig2.png
 ---
 
 
@@ -21,7 +22,7 @@ header-img: img/head-inst.jpg
 
 在读论文的过程中产生了许多疑问，也查找了不少资料。因为网上对这篇论文的解读不算很多，因此也把我阅读过程中的一些理解和寻找到的答案整理记录下来，希望对大家有一些帮助。在文章最后列出了论文原文与引用参考部分的链接。
 
-<img src="../img/21-0324-RALM-img/微信看一看界面.PNG" alt="微信看一看界面" style="zoom:30%" align="bottom" />
+<img src="img/21-0324-RALM-img/微信看一看界面.PNG" alt="微信看一看界面" style="zoom:30%" align="bottom" />
 
 ## 背景
 
