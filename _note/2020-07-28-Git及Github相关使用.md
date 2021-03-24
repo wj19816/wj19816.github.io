@@ -37,7 +37,7 @@ git remote rm origin  #先删除原来的
 git remote add origin http://   #再加上新的
 
 #切换分支
-git chechout feature_wj
+git checkout feature_wj
 git branch -a  #查看所有的分支
 
 #上传本地文件夹
