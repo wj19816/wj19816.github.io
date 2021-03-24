@@ -7,7 +7,7 @@ tags:
   - 算法
   - 推荐系统
 latex: true
-header-img: img/21-0324-RALM-img/fig2.png
+header-img: img/21-0324-RALM-img/head.JPG
 ---
 
 
@@ -22,7 +22,7 @@ header-img: img/21-0324-RALM-img/fig2.png
 
 在读论文的过程中产生了许多疑问，也查找了不少资料。因为网上对这篇论文的解读不算很多，因此也把我阅读过程中的一些理解和寻找到的答案整理记录下来，希望对大家有一些帮助。在文章最后列出了论文原文与引用参考部分的链接。
 
-<img src="img/21-0324-RALM-img/微信看一看界面.PNG" alt="微信看一看界面" style="zoom:30%" align="bottom" />
+<img src="/img/21-0324-RALM-img/微信看一看界面.PNG" alt="微信看一看界面" style="zoom:30%" align="bottom" />
 
 ## 背景
 
@@ -30,7 +30,7 @@ header-img: img/21-0324-RALM-img/fig2.png
 
 推荐系统的初衷是猜你喜欢什么，然后对你进行个性化推荐。但是目前主流的一些推荐算法（*比如协同过滤*），它们都非常依赖于item的历史行为特征，所以一些比较冷门、但是高质量的长尾内容，可能就会被预测出比较低的得分。也就是说，**热门的文章和目标用户已经点击过的文章总是被推荐，然后变得越来越热门，造成了推荐系统中的“马太效应”**。如果长时间这样，就会造成推荐疲劳，**推荐系统边界收窄**。所以许多模型也在致力于去消除马太效应。
 
-<img src="../img/21-0324-RALM-img/ppt/幻灯片3.png" alt="业务背景：马太效应" style="zoom:100%" align="bottom" />
+<img src="/img/21-0324-RALM-img/ppt/幻灯片3.png" alt="业务背景：马太效应" style="zoom:100%" align="bottom" />
 
 那么，解决这个问题的一种思路就是**Look-alike**模型，这是广告领域流行的一类方法，其核心思想就是针对某个item，先根据历史行为圈定一部分种子用户，然后通过模型寻找与种子用户相似的人群，为他们推荐该item。
 
@@ -44,7 +44,7 @@ Look-alike模型主要分两个大方向：
 1. **时效性要求非常高。**一般一条新闻的生命周期比较短，我今天没看到，明天就不感兴趣了。
 2. **候选集更新频率非常高。**一天可能有上百万条新内容，而传统的模型每新加入一个item就需要重新训练模型。这对于高时效性高频率更新的资讯推荐系统来说是难以接受的。
 
-<img src="../img/21-0324-RALM-img/ppt/幻灯片4.png" alt="业务背景：新闻推荐系统的要求" style="zoom:100%" align="bottom" />
+<img src="/img/21-0324-RALM-img/ppt/幻灯片4.png" alt="业务背景：新闻推荐系统的要求" style="zoom:100%" align="bottom" />
 
 那么RALM就是针对以上这个背景提出的一种实时Look-alike模型，所以它能够做到以下3点：
 
@@ -64,7 +64,7 @@ Look-alike模型主要分两个大方向：
 
 对于所有的候选内容（*包括latest news和long-tail contents等*），先根据每一篇内容的历史行为圈定一部分种子用户seeds，然后通过某种方式得到的user embeddinng去计算两者的look-alike score，根据得分去确定要不要推荐该item。大体流程可以看左边这张图。
 
-<img src="../img/21-0324-RALM-img/ppt/幻灯片6.png" alt="论文框架：Look-alike模型及本文创新点" style="zoom:100%" align="bottom" />
+<img src="/img/21-0324-RALM-img/ppt/幻灯片6.png" alt="论文框架：Look-alike模型及本文创新点" style="zoom:100%" align="bottom" />
 
 那么根据这张图呢，也能总体说明这篇论文在哪些部分进行了创新：
 
@@ -96,7 +96,7 @@ RALM模型主要分为三个流程：**离线训练、在线异步处理、在�
 - **User Representation Learning**：在user representation learning 这一步是为了去学习用户的高阶画像，得到是**所有user** *（包括seed users和target user）*共有的特征，然后将其传入look alike learning。
 - **Look-alike Learning**：look alike模型在离线训练的这一部分中，会对前面的user representation再次经过一次**FC**，然后得到look-alike user embedding，这一部分会被储存下来，以供线上服务直接拉取。
 
-<img src="../img/21-0324-RALM-img/ppt/幻灯片8.png" alt="系统架构：离线训练" style="zoom:100%" align="bottom" />
+<img src="/img/21-0324-RALM-img/ppt/幻灯片8.png" alt="系统架构：离线训练" style="zoom:100%" align="bottom" />
 
 #### 在线异步处理
 
@@ -115,7 +115,7 @@ RALM模型主要分为三个流程：**离线训练、在线异步处理、在�
 
 此外，由于这里已经对种子用户进行了聚类，那么$E_{global}$，也就是种子全局特征也可以进行离线计算并保存下来了，至于这个具体如何计算后续再细讲。所以这一步是定时输出Raw Seeds Embedding和$E_{global}$。
 
-<img src="../img/21-0324-RALM-img/ppt/幻灯片9.png" alt="系统架构：在线异步处理" style="zoom:100%" align="bottom" />
+<img src="/img/21-0324-RALM-img/ppt/幻灯片9.png" alt="系统架构：在线异步处理" style="zoom:100%" align="bottom" />
 
 
 
@@ -132,7 +132,7 @@ RALM模型主要分为三个流程：**离线训练、在线异步处理、在�
 
 在前面两步中，我们已经通过离线和定时离线把seeds embedding 、global embedding 和所有用户的look-alike embedding 都已缓存好。因此，当目标用户进行请求时，只需要从内存中拉取它们，然后在线上计算local embedding，然后再计算一次 cosine，就可以得到两者的相似度了。这个计算量很小，完全可以满足线上耗时的要求。
 
-<img src="../img/21-0324-RALM-img/ppt/幻灯片10.png" alt="系统架构：在线服务" style="zoom:100%" align="bottom" />
+<img src="/img/21-0324-RALM-img/ppt/幻灯片10.png" alt="系统架构：在线服务" style="zoom:100%" align="bottom" />
 
 ## 模型细节
 
@@ -144,7 +144,7 @@ RALM模型主要分为三个流程：**离线训练、在线异步处理、在�
 
 这个模型是用 **[Youtube DNN](https://cseweb.ucsd.edu/classes/fa17/cse291-b/reading/p191-covington.pdf)**模型演化过来的。在拼接层，Youtube DNN用的是直接concat的方式，但是这会导致一个问题：强特征过拟合、弱特征欠拟合，学习不均匀。可以看左下角的图，这是其中某个特征域使用concat层在训练过程中的参数分布变化，基本上都是0，没学到东西。
 
-<img src="../img/21-0324-RALM-img/ppt/幻灯片12.png" alt="User Representation Learning：框架" style="zoom:100%" align="bottom" />
+<img src="/img/21-0324-RALM-img/ppt/幻灯片12.png" alt="User Representation Learning：框架" style="zoom:100%" align="bottom" />
 
 也就是说，在这一步遇到了一个问题：**不同特征域的学习效果不能自适应变化**。
 
@@ -154,19 +154,19 @@ RALM模型主要分为三个流程：**离线训练、在线异步处理、在�
 
 当然，Attention也有很多类别，一部分attention模型可以简化为这样一张图。有三个矩阵Q,K,V，输入为Q，KV表示上下文信息。第一步计算点乘，然后为了防止结果过大，除以一个尺度，然后进行mask和softmax，最后将输出结果与V进行相乘得到权重求和。
 
-<img src="../img/21-0324-RALM-img/ppt/幻灯片13.png" alt="User Representation Learning：Self Attention介绍" style="zoom:100%" align="bottom" />
+<img src="/img/21-0324-RALM-img/ppt/幻灯片13.png" alt="User Representation Learning：Self Attention介绍" style="zoom:100%" align="bottom" />
 
 那么self-attention就是指里面的QKV三个矩阵是一样的，是输入的本身。通过这一种方式，就能够**让不同的域在自己的向量空间中学习充分，再通过不同的权重组合在一起**。其实是相当于让用户能有属于自己的表达，而不是被历史丰富的用户带着走，可以明显改善强弱特征训练不均衡的问题。
 
 之前学习不到的参数在加入Attention之后就有了明显的变化。下图是加入attention merge的一个效果对比，可以看到模型在 AUC 和 Loss 上都有所优化，而且收敛速度也会快一点。
 
-<img src="../img/21-0324-RALM-img/ppt/幻灯片14.png" alt="User Representation Learning：目的与效果" style="zoom:100%" align="bottom" />
+<img src="/img/21-0324-RALM-img/ppt/幻灯片14.png" alt="User Representation Learning：目的与效果" style="zoom:100%" align="bottom" />
 
 那么，再回到论文的结构。对感兴趣的item特征进行同样的操作，然后将user embedding和item embedding作点积后进行训练。
 
 这里使用的损失函数是参考了Google word2vec中的**NCE loss**。因为普通的模型归一化部分使用的是softmax，而推荐其实是个非常多分类的问题，这里是通过负采样的方式来解决归一化项。这个好处是**固定其他权重，每次只更新部分权重，减少计算量**。论文中设置每个用户的最大正样本数限制为50个，正负样本比例为1/10，也就是说每次只需要更新被负采样出来的500个参数即可。
 
-<img src="../img/21-0324-RALM-img/ppt/幻灯片15.png" alt="User Representation Learning：损失函数的设定" style="zoom:100%" align="bottom" />
+<img src="/img/21-0324-RALM-img/ppt/幻灯片15.png" alt="User Representation Learning：损失函数的设定" style="zoom:100%" align="bottom" />
 
 User Representation Learning部分训练的目的是预测：用户在点击了已有的item 之后下一个要点击的 item是什么，也就是得到最后能够表达用户兴趣的 embedding。
 
@@ -176,7 +176,7 @@ Look-alike learning是整篇论文的核心部分。
 
 Look-alike learning的核心目的是为了学习seed用户和目标用户之间的相关性，使用的其实是一个**双塔模型**。左边的是“种子塔”，右边是“目标塔”。假设一篇文章有$n$个种子用户，那么种子塔的输入embedding是一个$n\times m$的矩阵，目标塔是$1\times m$。
 
-<img src="../img/21-0324-RALM-img/ppt/幻灯片16.png" alt="Look-alike Learning：框架" style="zoom:100%" align="bottom" />
+<img src="/img/21-0324-RALM-img/ppt/幻灯片16.png" alt="Look-alike Learning：框架" style="zoom:100%" align="bottom" />
 
 
 
@@ -192,7 +192,7 @@ Look-alike learning的核心目的是为了学习seed用户和目标用户之间
 
 - **个性信息。**种子群体中一定存在一小部分用户和 target 用户兴趣相似，这时，当 target 人群变化时，信息会变化。
 
-<img src="../img/21-0324-RALM-img/ppt/幻灯片17.png" alt="Look-alike Learning：global&local embedding" style="zoom:100%" align="bottom" />
+<img src="/img/21-0324-RALM-img/ppt/幻灯片17.png" alt="Look-alike Learning：global&local embedding" style="zoom:100%" align="bottom" />
 
 那么怎样去学习这两种信息呢，依旧是使用了 attention 机制，但是这边是两个不同的attention。
 
@@ -210,7 +210,7 @@ Look-alike learning的核心目的是为了学习seed用户和目标用户之间
 - **对比模型**：逻辑回归，雅虎的look-alike模型、YouTubeDNN和RALM但是使用userembedding的平均的模型。
 - **指标**：除了AUC，还用了prec@K，表示被推荐的排名前K的结果中用户实际阅读的条目。
 
-<img src="../img/21-0324-RALM-img/ppt/幻灯片19.png" alt="模型评估：数据&对比模型的选择" style="zoom:100%" align="bottom" />
+<img src="/img/21-0324-RALM-img/ppt/幻灯片19.png" alt="模型评估：数据&对比模型的选择" style="zoom:100%" align="bottom" />
 
 ### 离线评估
 
@@ -220,7 +220,7 @@ Look-alike learning的核心目的是为了学习seed用户和目标用户之间
 
 而**RALM with attention units在所有模型中表现最好**，也就是说attention机制确实有助于种子用户信息的提取，并发现种子与目标用户之间的局部关系。
 
-<img src="../img/21-0324-RALM-img/ppt/幻灯片20.png" alt="模型评估：离线评估" style="zoom:100%" align="bottom" />
+<img src="/img/21-0324-RALM-img/ppt/幻灯片20.png" alt="模型评估：离线评估" style="zoom:100%" align="bottom" />
 
 ### 在线A/B测试结果
 
@@ -232,7 +232,7 @@ Look-alike learning的核心目的是为了学习seed用户和目标用户之间
 
 总的来说，RALM对种子用户进行了高质量和多样化的推广，所有推荐内容都可以到达合适的目标用户。
 
-<img src="../img/21-0324-RALM-img/ppt/幻灯片21.png" alt="模型评估：在线A/B测试结果" style="zoom:100%" align="bottom" />
+<img src="/img/21-0324-RALM-img/ppt/幻灯片21.png" alt="模型评估：在线A/B测试结果" style="zoom:100%" align="bottom" />
 
 ## 其它补充
 
@@ -242,7 +242,7 @@ Look-alike learning的核心目的是为了学习seed用户和目标用户之间
 
 在一篇文章刚推出来时，它的种子用户为0，这里肯定还是要进行初始曝光的。微信是先使用**语义特征和用户画像**做了简单的MLP预估点击率，在累积了大约100个种子用户后，就可以进行look-alike算法了。
 
-<img src="../img/21-0324-RALM-img/ppt/幻灯片23.png" alt="其它补充：冷启动曝光" style="zoom:50%" align="bottom" />
+<img src="/img/21-0324-RALM-img/ppt/幻灯片23.png" alt="其它补充：冷启动曝光" style="zoom:50%" align="bottom" />
 
 
 
@@ -253,7 +253,7 @@ Look-alike learning的核心目的是为了学习seed用户和目标用户之间
 - 尽量保证look-alike learning结构简单，并在全连接层加入dropout。
 - 采用 stacking model 的形式。看一看阅读、电商、新闻、音乐领域都做一次 user representation learning，这些特征用 stacking 的模式都放到 look alike model 中学习，这就是不同特征根据不同目标来训练的，更加减少了在同一个模型中过拟合的防线。
 
-<img src="../img/21-0324-RALM-img/ppt/幻灯片24.png" alt="其它补充：模型调优" style="zoom:50%" align="bottom" />
+<img src="/img/21-0324-RALM-img/ppt/幻灯片24.png" alt="其它补充：模型调优" style="zoom:50%" align="bottom" />
 
 ### 细节问答
 

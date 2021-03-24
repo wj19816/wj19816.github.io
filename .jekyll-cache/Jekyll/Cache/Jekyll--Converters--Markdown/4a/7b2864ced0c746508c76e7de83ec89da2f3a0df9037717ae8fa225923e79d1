@@ -1,0 +1,335 @@
+I"j<blockquote>
+  <p><strong>微信团队</strong>发表在KDD2019上的一篇论文《<strong>Real-time Attention Based Look-alike Model for Recommender System</strong>》，简称是RALM，主要介绍的是一种将Attention机制与look-alike模型结合后的实时推荐模型，这个算法目前应用在了微信“看一看”模块上。</p>
+</blockquote>
+
+<!-- more -->
+
+<p>前段时间读了来自<strong>微信团队</strong>发表在KDD2019上的一篇论文《<strong>Real-time Attention Based Look-alike Model for Recommender System</strong>》，简称是RALM，主要介绍的是一种将Attention机制与look-alike模型结合后的实时推荐模型，这个算法目前应用在了微信“看一看”模块上。</p>
+
+<p>在读论文的过程中产生了许多疑问，也查找了不少资料。因为网上对这篇论文的解读不算很多，因此也把我阅读过程中的一些理解和寻找到的答案整理记录下来，希望对大家有一些帮助。在文章最后列出了论文原文与引用参考部分的链接。</p>
+
+<p><img src="/img/21-0324-RALM-img/微信看一看界面.PNG" alt="微信看一看界面" style="zoom:30%" align="bottom" /></p>
+
+<h2 id="背景">背景</h2>
+
+<p>首先介绍一下这个算法的业务背景。</p>
+
+<p>推荐系统的初衷是猜你喜欢什么，然后对你进行个性化推荐。但是目前主流的一些推荐算法（<em>比如协同过滤</em>），它们都非常依赖于item的历史行为特征，所以一些比较冷门、但是高质量的长尾内容，可能就会被预测出比较低的得分。也就是说，<strong>热门的文章和目标用户已经点击过的文章总是被推荐，然后变得越来越热门，造成了推荐系统中的“马太效应”</strong>。如果长时间这样，就会造成推荐疲劳，<strong>推荐系统边界收窄</strong>。所以许多模型也在致力于去消除马太效应。</p>
+
+<p><img src="../img/21-0324-RALM-img/ppt/幻灯片3.png" alt="业务背景：马太效应" style="zoom:100%" align="bottom" /></p>
+
+<p>那么，解决这个问题的一种思路就是<strong>Look-alike</strong>模型，这是广告领域流行的一类方法，其核心思想就是针对某个item，先根据历史行为圈定一部分种子用户，然后通过模型寻找与种子用户相似的人群，为他们推荐该item。</p>
+
+<p>Look-alike模型主要分两个大方向：</p>
+
+<ul>
+  <li><strong>Similarity based models</strong> (LSH局部敏感哈希/k-means)</li>
+  <li><strong>Regression based models</strong> (LR/FM/MLP)</li>
+</ul>
+
+<p>这些模型其实在广告系统中都得到了还不错的效果，但是在新闻资讯的推荐系统中并不适用。因为它有以下2个特点：</p>
+
+<ol>
+  <li><strong>时效性要求非常高。</strong>一般一条新闻的生命周期比较短，我今天没看到，明天就不感兴趣了。</li>
+  <li><strong>候选集更新频率非常高。</strong>一天可能有上百万条新内容，而传统的模型每新加入一个item就需要重新训练模型。这对于高时效性高频率更新的资讯推荐系统来说是难以接受的。</li>
+</ol>
+
+<p><img src="../img/21-0324-RALM-img/ppt/幻灯片4.png" alt="业务背景：新闻推荐系统的要求" style="zoom:100%" align="bottom" /></p>
+
+<p>那么RALM就是针对以上这个背景提出的一种实时Look-alike模型，所以它能够做到以下3点：</p>
+
+<ul>
+  <li>实时：如果出现了新的item，它<strong>不需要重新训练模型</strong>，能够直接实时完成种子用户扩展</li>
+  <li>高效：在<strong>保持CTR前提下</strong>加强对于长尾内容的挖掘和推荐，获得更准确和更具多样性的用户表达</li>
+  <li>快速：降低了计算复杂度，精简预测计算，<strong>满足线上的耗时性能要求</strong></li>
+</ul>
+
+<h2 id="论文框架">论文框架</h2>
+
+<p>接下来我们就来介绍一下算法的总体框架和流程。</p>
+
+<h3 id="整体框架">整体框架</h3>
+
+<p>首先是整个算法的框架，其实就是<strong>以Look-alike模型为核心，加入实时计算</strong>。</p>
+
+<p>对于所有的候选内容（<em>包括latest news和long-tail contents等</em>），先根据每一篇内容的历史行为圈定一部分种子用户seeds，然后通过某种方式得到的user embeddinng去计算两者的look-alike score，根据得分去确定要不要推荐该item。大体流程可以看左边这张图。</p>
+
+<p><img src="../img/21-0324-RALM-img/ppt/幻灯片6.png" alt="论文框架：Look-alike模型及本文创新点" style="zoom:100%" align="bottom" /></p>
+
+<p>那么根据这张图呢，也能总体说明这篇论文在哪些部分进行了创新：</p>
+
+<ul>
+  <li>
+    <p><strong>User-users Model</strong>：这是一个u2users的模型，它用一大群种子用户得到了种子用户群，然后使用用户群的特征代替了候选item行为特征。</p>
+  </li>
+  <li>
+    <p><strong>User Representation</strong>：这一部分的学习过程是基于Youtube DNN来做的，Youtube DNN模型使用了深度网络结构来学习用户的embedding，然后将其输入concatenation层，最后输入MLP中。RALM中对其作了一些改进，使用了Attention-merge layer来代替它，希望能够保证强/弱特征都能产生效果。</p>
+  </li>
+  <li>
+    <p><strong>Seeds Representation</strong>：在推荐系统中有大量的用户，那么如何使用每个用户的representation来表示种子群是一个比较关键的问题。在这里，RALM使用了global 和local 两部分的representation来保证其稳健性和自适应能力。</p>
+  </li>
+  <li>
+    <p><strong>Real-time Look-alike</strong>：它是一个实时模型，那么为了减少线上计算的时间复杂度，RALM对种子用户进行了聚类，然后保存了每一类的质心，那么线上只需要计算质心的embedding和目标用户的相似度即可，将<strong>耗时从1000ms降低到了20ms</strong>。</p>
+  </li>
+</ul>
+
+<h3 id="实现流程">实现流程</h3>
+
+<p>RALM模型主要分为三个流程：<strong>离线训练、在线异步处理、在线服务</strong>。这里先简单介绍一下它们都干了啥，模型细节在后面聊。</p>
+
+<h4 id="离线训练">离线训练</h4>
+
+<p>离线训练目的是为了得到用户的高阶特征。</p>
+
+<blockquote>
+  <ul>
+    <li><strong>输入：Multi-Fields User Features</strong></li>
+    <li>User Representation Learning</li>
+    <li>Look-alike Learning （部分）</li>
+    <li><strong>输出： Look-alike Embedding（cache）</strong></li>
+  </ul>
+</blockquote>
+
+<p>它的输入是一些multi-fields的用户特征，训练过程主要包括两个阶段的训练：user representation learning和look alike learning。<strong>这里需要的注意的是，虽然look-alike学习在框架图中写在离线训练部分，但其实相似度计算、在线异步处理其实都是look-alike建模过程中的流程，而这里的离线训练只是look-alike学习中的一部分。</strong></p>
+
+<ul>
+  <li><strong>User Representation Learning</strong>：在user representation learning 这一步是为了去学习用户的高阶画像，得到是<strong>所有user</strong> <em>（包括seed users和target user）</em>共有的特征，然后将其传入look alike learning。</li>
+  <li><strong>Look-alike Learning</strong>：look alike模型在离线训练的这一部分中，会对前面的user representation再次经过一次<strong>FC</strong>，然后得到look-alike user embedding，这一部分会被储存下来，以供线上服务直接拉取。</li>
+</ul>
+
+<p><img src="../img/21-0324-RALM-img/ppt/幻灯片8.png" alt="系统架构：离线训练" style="zoom:100%" align="bottom" /></p>
+
+<h4 id="在线异步处理">在线异步处理</h4>
+
+<p>离线训练结束后，是在线异步处理，这一步的目的是为了得到seeds的Raw Feeds Embedding。</p>
+
+<blockquote>
+  <ul>
+    <li><strong>【对候选集中所有内容遍历进行以下操作】</strong></li>
+    <li><strong>输入：最新的300万点击用户的user embedding</strong></li>
+    <li>每5分钟进行 K-means 聚类，保存簇中心</li>
+    <li><strong>输出： Raw Feeds Embedding &amp; $E_{global}$</strong></li>
+  </ul>
+</blockquote>
+
+<p><strong>这一步虽然是叫“在线”，但其实与线上请求无关，也是离线计算的，是一种定时离线计算。</strong></p>
+
+<p>假设候选内容里可能有100篇最新的或者高质量的文章，那么对于每一篇文章，如何去获得每个候选文章的种子用户群，就是在这一步完成。种子用户就是点击过该文章的用户，那么一段时间后每篇候选的文章都会对应一个种子用户列表，这个用户列表可以从<strong>用户点击日志</strong>中获取，并且会随着时间过去越来越多。不过，如果点击用户过多，也会造成聚类效果的下降，这里只取<em>最新的300万点击用户作为原始种子用户（可少不可多）</em>。</p>
+
+<p>那么，对于这些种子用户，可以<strong>取出他们在离线训练中得到的Look-alike Embedding，进行聚类</strong>，聚类个数就是最终种子用户群的个数，论文里使用<em>k=20</em>。然后计算它们的K-Means 聚类中心，保存下来，作为Raw Seeds Embedding。但是这个种子用户列表与目标用户无关，也没必要实时更新，只需要隔一段时间更新一次就行，论文里使用的是5分钟。</p>
+
+<p>此外，由于这里已经对种子用户进行了聚类，那么$E_{global}$，也就是种子全局特征也可以进行离线计算并保存下来了，至于这个具体如何计算后续再细讲。所以这一步是定时输出Raw Seeds Embedding和$E_{global}$。</p>
+
+<p><img src="../img/21-0324-RALM-img/ppt/幻灯片9.png" alt="系统架构：在线异步处理" style="zoom:100%" align="bottom" /></p>
+
+<h4 id="在线服务">在线服务</h4>
+
+<p>这一步才是真正的实时在线计算。这一步的目的是计算target和seeds的相似度。</p>
+
+<blockquote>
+  <ul>
+    <li><strong>输入：Target User</strong></li>
+    <li>拉取 Target User Embedding，遍历每一篇候选内容，拉取raw seeds embedding</li>
+    <li>计算 $E_{local}$，得到相似度，提供曝光依据</li>
+    <li><strong>输出： Similarity score</strong></li>
+  </ul>
+</blockquote>
+
+<p>那么，论文认为对相似度的计算应该同时考虑<strong>共性信息的相似</strong>和<strong>个性信息的相似</strong>，这里的共性信息和个性信息分别就是指global embedding和local embedding，然后对它们进行加权求和。</p>
+
+<p>在前面两步中，我们已经通过离线和定时离线把seeds embedding 、global embedding 和所有用户的look-alike embedding 都已缓存好。因此，当目标用户进行请求时，只需要从内存中拉取它们，然后在线上计算local embedding，然后再计算一次 cosine，就可以得到两者的相似度了。这个计算量很小，完全可以满足线上耗时的要求。</p>
+
+<p><img src="../img/21-0324-RALM-img/ppt/幻灯片10.png" alt="系统架构：在线服务" style="zoom:100%" align="bottom" /></p>
+
+<h2 id="模型细节">模型细节</h2>
+
+<p>接下来针对模型细节进行分析。</p>
+
+<h3 id="user-representation-learning">User Representation Learning</h3>
+
+<p>首先来关注离线训练部分的User Representation Learning。</p>
+
+<p>这个模型是用 <strong><a href="https://cseweb.ucsd.edu/classes/fa17/cse291-b/reading/p191-covington.pdf">Youtube DNN</a></strong>模型演化过来的。在拼接层，Youtube DNN用的是直接concat的方式，但是这会导致一个问题：强特征过拟合、弱特征欠拟合，学习不均匀。可以看左下角的图，这是其中某个特征域使用concat层在训练过程中的参数分布变化，基本上都是0，没学到东西。</p>
+
+<p><img src="../img/21-0324-RALM-img/ppt/幻灯片12.png" alt="User Representation Learning：框架" style="zoom:100%" align="bottom" /></p>
+
+<p>也就是说，在这一步遇到了一个问题：<strong>不同特征域的学习效果不能自适应变化</strong>。</p>
+
+<p>因为用户的原始特征用到了很多个field，每个 field可能是每个用户在每个分布下的行为，如电商购物的行为，或者是公众号阅读的行为。如果现在训练一个模型，特征目标是在“看一看”中的阅读行为，对于某些经常使用微信公众号、或者阅读的用户来说，他们在公众号平台的阅读历史就是非常强的关联特征，能够决定再看一看中的兴趣。对于这些特征来说，这些特征是很强的，而其它电商购物或者是搜索特征就是比较弱的，但并不意味着这些特征就不重要了。如果现在有一些新用户，它们没有在公众号平台的阅读历史，但是他们有过购物或者搜索，这时候影响他下一次阅读的文章就是购物或者搜索的历史行为，但目前，显然这些用户是没有学到这些变化的。</p>
+
+<p>所以为了解决这个问题呢，论文把YouTubeDNN中的concat merge层用了一个<strong>self-attention</strong>去代替。这个机制的优点是，可以针对不同用户的特征域输入来动态调整merge layer的方式。</p>
+
+<p>当然，Attention也有很多类别，一部分attention模型可以简化为这样一张图。有三个矩阵Q,K,V，输入为Q，KV表示上下文信息。第一步计算点乘，然后为了防止结果过大，除以一个尺度，然后进行mask和softmax，最后将输出结果与V进行相乘得到权重求和。</p>
+
+<p><img src="../img/21-0324-RALM-img/ppt/幻灯片13.png" alt="User Representation Learning：Self Attention介绍" style="zoom:100%" align="bottom" /></p>
+
+<p>那么self-attention就是指里面的QKV三个矩阵是一样的，是输入的本身。通过这一种方式，就能够<strong>让不同的域在自己的向量空间中学习充分，再通过不同的权重组合在一起</strong>。其实是相当于让用户能有属于自己的表达，而不是被历史丰富的用户带着走，可以明显改善强弱特征训练不均衡的问题。</p>
+
+<p>之前学习不到的参数在加入Attention之后就有了明显的变化。下图是加入attention merge的一个效果对比，可以看到模型在 AUC 和 Loss 上都有所优化，而且收敛速度也会快一点。</p>
+
+<p><img src="../img/21-0324-RALM-img/ppt/幻灯片14.png" alt="User Representation Learning：目的与效果" style="zoom:100%" align="bottom" /></p>
+
+<p>那么，再回到论文的结构。对感兴趣的item特征进行同样的操作，然后将user embedding和item embedding作点积后进行训练。</p>
+
+<p>这里使用的损失函数是参考了Google word2vec中的<strong>NCE loss</strong>。因为普通的模型归一化部分使用的是softmax，而推荐其实是个非常多分类的问题，这里是通过负采样的方式来解决归一化项。这个好处是<strong>固定其他权重，每次只更新部分权重，减少计算量</strong>。论文中设置每个用户的最大正样本数限制为50个，正负样本比例为1/10，也就是说每次只需要更新被负采样出来的500个参数即可。</p>
+
+<p><img src="../img/21-0324-RALM-img/ppt/幻灯片15.png" alt="User Representation Learning：损失函数的设定" style="zoom:100%" align="bottom" /></p>
+
+<p>User Representation Learning部分训练的目的是预测：用户在点击了已有的item 之后下一个要点击的 item是什么，也就是得到最后能够表达用户兴趣的 embedding。</p>
+
+<h3 id="look-alike-learning">Look-alike Learning</h3>
+
+<p>Look-alike learning是整篇论文的核心部分。</p>
+
+<p>Look-alike learning的核心目的是为了学习seed用户和目标用户之间的相关性，使用的其实是一个<strong>双塔模型</strong>。左边的是“种子塔”，右边是“目标塔”。假设一篇文章有$n$个种子用户，那么种子塔的输入embedding是一个$n\times m$的矩阵，目标塔是$1\times m$。</p>
+
+<p><img src="../img/21-0324-RALM-img/ppt/幻灯片16.png" alt="Look-alike Learning：框架" style="zoom:100%" align="bottom" /></p>
+
+<p><strong>首先是在离线部分，它们会再进行一层FC，然后将原来$m$维的矩阵转换为$h$维的embedding，这一部分的输出会被保存在内存中。</strong>由于考虑到过拟合的风险，所以种子塔和目标塔是共享一层参数的。<em>（共享参数我在这里理解的是，实际上模型进行到这时还没拆分为两个塔，其实就是对所有的user embedding再加一层FC而已，不过不确定这样理解是否正确。）</em></p>
+
+<p>那么，接下来要做的是如何表达 seeds user。</p>
+
+<p>因为这里输入的还是原始的种子用户embedding，没有得到种子群的embedding，所以先对他们进行一个异步定时聚类，主要目的是减少信息损失和降低时间复杂度。在前面提到，因为种子用户是选取了最新点击的300w用户，也就是说$n=3000000$，那么在后续进行各种线上计算的时候对耗时的要求也很高。那么<strong>如果想减少耗时，就需要降低$n$，</strong>如果使用减少种子用户数量的方式，可能就会造成种子用户代表性不够、信息损失大。所以论文中使用了k-means聚类的方式，然后<strong>选取每一类的质心作为这一群用户的embedding</strong>，这样就得到了种子用户群。这里根据实验$k=20$。也就是说，从原来的$3000000\times h$变为了$20\times h$。<em>（微信团队对耗时进行了实验，从原来的1000ms降低到了20ms）</em>。</p>
+
+<p>这样就得到了种子群，那么种子群应该包含什么信息呢？论文提出：<strong>种子用户群的相对表达=个性信息+共性信息</strong>。</p>
+
+<ul>
+  <li>
+    <p><strong>共性信息。</strong>和目标用户无关，只和用户群体自身有关。每个用户都有自己的兴趣，但对整个群体的人群信息存在不同的贡献度。</p>
+  </li>
+  <li>
+    <p><strong>个性信息。</strong>种子群体中一定存在一小部分用户和 target 用户兴趣相似，这时，当 target 人群变化时，信息会变化。</p>
+  </li>
+</ul>
+
+<p><img src="../img/21-0324-RALM-img/ppt/幻灯片17.png" alt="Look-alike Learning：global&amp;local embedding" style="zoom:100%" align="bottom" /></p>
+
+<p>那么怎样去学习这两种信息呢，依旧是使用了 attention 机制，但是这边是两个不同的attention。</p>
+
+<ul>
+  <li><strong>global embedding</strong>：依旧是一个self attention，这一部分与目标用户无关，捕捉用户群体自身内部的兴趣分布，可以离线预先计算好。</li>
+  <li><strong>local embedding</strong>：这是一个乘法attention，与self attention不同的就是它是对seed和user进行了相乘，来提取种子用户群体中和 target user 相关的部分，捕获种子用户的 local info。</li>
+</ul>
+
+<p>计算公式见PPT右上角。那么，有了这两个 embedding 之后，分别与目标用户的embedding作cosine，计算相似性，然后<strong>通过加权和的方式，得到结合了两部分信息的相似性得分</strong>。最后再去拟合 user 到 item 的 label，这就完成了种子用户的扩展。相似度得分可直接给到排序服务，做曝光依据。到这里，模型就介绍完了。</p>
+
+<h2 id="模型效果">模型效果</h2>
+
+<p>论文也对模型的效果进行了评估。评估部分使用的数据、模型与指标如下：</p>
+
+<ul>
+  <li><strong>数据</strong>：微信看一看推荐系统中的真实流量数据</li>
+  <li><strong>特征</strong>：用户性别、年龄、感兴趣的类别和标签、历史阅读articleID。不过这里因为数据集太大，考虑的特征很少，所以AUC没有公共数据集高。</li>
+  <li><strong>对比模型</strong>：逻辑回归，雅虎的look-alike模型、YouTubeDNN和RALM但是使用userembedding的平均的模型。</li>
+  <li><strong>指标</strong>：除了AUC，还用了prec@K，表示被推荐的排名前K的结果中用户实际阅读的条目。</li>
+</ul>
+
+<p><img src="../img/21-0324-RALM-img/ppt/幻灯片19.png" alt="模型评估：数据&amp;对比模型的选择" style="zoom:100%" align="bottom" /></p>
+
+<h3 id="离线评估">离线评估</h3>
+
+<p>首先是离线评估结果。</p>
+
+<p>可以看到LR和Yahoo Look-alike模型的效果相对并不好，而相比之下深度模型效果更好而与Youtube DNN相比，RALM with平均的模型效果反而较差，这意味着简单地平均用户embedding并不像end-to-end深度模型那样有效。</p>
+
+<p>而<strong>RALM with attention units在所有模型中表现最好</strong>，也就是说attention机制确实有助于种子用户信息的提取，并发现种子与目标用户之间的局部关系。</p>
+
+<p><img src="../img/21-0324-RALM-img/ppt/幻灯片20.png" alt="模型评估：离线评估" style="zoom:100%" align="bottom" /></p>
+
+<h3 id="在线ab测试结果">在线A/B测试结果</h3>
+
+<p>为了验证RALM给推荐系统带来的真正好处，微信团队从2018年11月至2018年12月在微信“Top Stories”推荐系统中进行了在线A/B测试。</p>
+
+<p>他们将在线流量按用户id进行划分，并按相同比例分配给对照组和实验组，对照组是用户画像匹配推送的策略。评估指标的定义可以参见论文。</p>
+
+<p>从表中可以看出：由于受众的扩大，曝光率得到了很大的提升。在扩大曝光规模的前提下，CTR 基本取向稳定，而且有微小提升，说明扩展用户对这些内容也很感兴趣。此外，用户的兴趣面得到了扩展，类别和标签的多样性也显著增加。基尼系数增长了5.36%，马太效应得到缓解。</p>
+
+<p>总的来说，RALM对种子用户进行了高质量和多样化的推广，所有推荐内容都可以到达合适的目标用户。</p>
+
+<p><img src="../img/21-0324-RALM-img/ppt/幻灯片21.png" alt="模型评估：在线A/B测试结果" style="zoom:100%" align="bottom" /></p>
+
+<h2 id="其它补充">其它补充</h2>
+
+<p><strong>注：这里的内容基本来自于作者在社交平台上的分享与评论解答，具体可以参见引用中的两篇文章。</strong></p>
+
+<h3 id="冷启动曝光">冷启动曝光</h3>
+
+<p>在一篇文章刚推出来时，它的种子用户为0，这里肯定还是要进行初始曝光的。微信是先使用<strong>语义特征和用户画像</strong>做了简单的MLP预估点击率，在累积了大约100个种子用户后，就可以进行look-alike算法了。</p>
+
+<p><img src="../img/21-0324-RALM-img/ppt/幻灯片23.png" alt="其它补充：冷启动曝光" style="zoom:50%" align="bottom" /></p>
+
+<h3 id="模型调优">模型调优</h3>
+
+<p>为了避免模型过拟合，作者也采取了比较多的方式去进行模型调优。</p>
+
+<ul>
+  <li>尽量保证look-alike learning结构简单，并在全连接层加入dropout。</li>
+  <li>采用 stacking model 的形式。看一看阅读、电商、新闻、音乐领域都做一次 user representation learning，这些特征用 stacking 的模式都放到 look alike model 中学习，这就是不同特征根据不同目标来训练的，更加减少了在同一个模型中过拟合的防线。</li>
+</ul>
+
+<p><img src="../img/21-0324-RALM-img/ppt/幻灯片24.png" alt="其它补充：模型调优" style="zoom:50%" align="bottom" /></p>
+
+<h3 id="细节问答">细节问答</h3>
+
+<ul>
+  <li><strong>Q：这个算法有没有在召回环节用，曝光该如何理解？</strong>
+    <blockquote>
+      <p>目前的策略有两种方式：</p>
+      <ol>
+        <li>直接采用召回的方式，定一个曝光阈值，直接确定是否曝光；</li>
+        <li>把相似分数给到下游的 CTR model 作为参考。</li>
+      </ol>
+    </blockquote>
+  </li>
+</ul>
+
+<p><strong>Q：能否将两阶段学习合并成一个端到端学习？</strong></p>
+
+<blockquote>
+  <p>End-to-End 方式存在两个问题：</p>
+  <ol>
+    <li>整个模型参数量很大，结构比较复杂，采用 End-to-End 方式不一定能学习到或者学习的很充分；</li>
+    <li>刚刚讲到的 stacking 方式，我们最后需要的是尽可能全的表达用户的方式，所以右侧的 user representation learning 并不是从单一业务领域得出的结果，有可能是在多个领域得到的结果，比如在看一看训练一版 user representation learning，然后用社交或者电商上的行为，再做一版用户的表示，最后用 stacking 的方式把它们拼接起来，作为特征输入，这样达到的效果会更好。</li>
+  </ol>
+</blockquote>
+
+<p><strong>Q：如果将第一阶段用户表征学习换成其他通用能学习表征用户向量的模型，效果会有什么影响？</strong></p>
+<blockquote>
+  <p>我们单独用 user representation learning 和其它模型做过对比，比如 CTR 中的 user embedding，是针对当前业务比较精准化的表达，所在在泛化性上没有 user representation learning 效果好。</p>
+</blockquote>
+
+<p><strong>Q：第一个epoch的时候，如何获取聚类中心？</strong></p>
+
+<blockquote>
+  <p>第一轮就可以聚类，先过随机初始化的FC层，然后聚类，后面根据网络调优。</p>
+</blockquote>
+
+<p><strong>Q：聚类部分如何迭代？</strong></p>
+
+<blockquote>
+  <p>聚类的过程需要迭代，比较耗时，并非每个 batch 都去更新聚类中心，而是采取迭代更新的方式，比如把1000个 batch 一轮，训练完1000个 batch 之后，这1000个 batch 中，不更新聚类中心；到了第二轮，根据全连接参数的变化，再去更新种子用户的聚类中心，每通过一轮更新一次聚类中心，保证和核心参数是同步的。这样既保证了训练的效率，也保证了训练的准确性。聚类的优化，使线上的计算次数减小到了 k/K 中，之前 K 是万级别的数量，现在 k 是百级别的数量，耗时也下降了很多。</p>
+</blockquote>
+
+<h2 id="引用与参考">引用与参考</h2>
+
+<ul>
+  <li>论文原文：
+    <ul>
+      <li><a href="https://arxiv.org/abs/1906.05022">《Real-time Attention Based Look-alike Model for Recommender System》</a></li>
+    </ul>
+  </li>
+  <li>作者自己的说明文章：
+    <ul>
+      <li><a href="https://zhuanlan.zhihu.com/p/71951411">RALM: 实时 look-alike 算法在推荐系统中的应用</a></li>
+      <li><a href="https://blog.csdn.net/m0_37586850/article/details/103268200">【推荐解读】RALM: 实时 Look-alike 算法在微信看一看中的应用（附PPT下载链接）</a></li>
+    </ul>
+  </li>
+  <li>比较不错的解读：
+    <ul>
+      <li><a href="https://blog.csdn.net/weixin_40901056/article/details/97376614">LSH以及Look-alike 技术总结: Similarity-based,Regression-based,Attention-based</a></li>
+    </ul>
+  </li>
+  <li>文中插图为本人制作的PPT，图片来自于论文原文及网络。</li>
+</ul>
+
+:ET

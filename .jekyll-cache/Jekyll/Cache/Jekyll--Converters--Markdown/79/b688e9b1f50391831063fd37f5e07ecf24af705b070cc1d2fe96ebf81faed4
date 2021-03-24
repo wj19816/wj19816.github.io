@@ -64,7 +64,7 @@ git remote <span class="nb">rm </span>origin  <span class="c">#先删除原来�
 git remote add origin http://   <span class="c">#再加上新的</span>
 
 <span class="c">#切换分支</span>
-git chechout feature_wj
+git checkout feature_wj
 git branch <span class="nt">-a</span>  <span class="c">#查看所有的分支</span>
 
 <span class="c">#上传本地文件夹</span>

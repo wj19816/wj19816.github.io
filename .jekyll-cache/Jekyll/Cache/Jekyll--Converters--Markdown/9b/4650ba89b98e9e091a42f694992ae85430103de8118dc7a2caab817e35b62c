@@ -1,4 +1,4 @@
-I"?*<blockquote>
+I"�*<blockquote>
   <p>Shell语言入门笔记</p>
 </blockquote>
 
@@ -273,10 +273,12 @@ array_n[n]<span class="o">=</span>vn  <span class="c">#可以不使用连续的�
 4
 5
 6
+7
 </pre></td><td class="rouge-code"><pre><span class="nb">set</span>     <span class="c">#显示环境变量</span>
 <span class="nb">set</span> <span class="nt">-e</span>  <span class="c">#只要脚本中发生错误，就停止执行并退出shell（否则虽然报错，但是依旧会继续运行</span>
 <span class="nb">set</span> <span class="nt">-u</span>  <span class="c">#如果遇到不存在的变量会报错并停止执行（否则不报错，也继续执行）</span>
-<span class="nb">set</span> <span class="nt">-x</span> 
+<span class="nb">set</span> <span class="nt">-x</span>  <span class="c">#先输出执行的那一行命令</span>
+<span class="nb">set</span> <span class="nt">-e</span>  <span class="c">#脚本只要发生错误，就终止执行</span>
 
 <span class="c">## tips：set后的后缀改成+号则会关闭该功能。</span>
 </pre></td></tr></tbody></table></code></pre></div></div>
